@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import Account from "../models/Account";
+    import Account from "../../models/Account";
 
     export default {
         name: 'AccountBanner',
@@ -35,7 +35,7 @@
 
         methods: {
             getImageUrl(url) {
-                return require('../assets/' + url);
+                return require('../../assets/' + url);
             }
         }
     }

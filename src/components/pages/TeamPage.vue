@@ -29,7 +29,7 @@
     import NewsList from "../partials/NewsList";
     import Dummy from "../../utils/Dummy";
     import Table from "../Table";
-    import AccountBanner from "../AccountBanner";
+    import AccountBanner from "../partials/AccountBanner";
 
     export default {
         name: 'TeamPage',

@@ -27,7 +27,7 @@
 <script>
     import Dummy from "../../utils/Dummy";
     import Table from "../Table";
-    import AccountBanner from "../AccountBanner";
+    import AccountBanner from "../partials/AccountBanner";
     import League from "../../models/League";
     import MatchList from "../MatchList";
     import MatchDetail from "../MatchDetail";
