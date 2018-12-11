@@ -2,24 +2,24 @@
     <div class="container-fluid border">
         <div class="row p-4">
             <div class="col">
-                <router-link :to="{ name: 'league', params: { id: league.id }}" tag="div" class="cp">
+                <router-link :to="{ name: 'news', params: { id: news.id }}" tag="div" class="cp">
                     <div class="row">
-                        <span class="h5 text-dark font-weight-bold mr-4">{{league.title}}</span>
+                        <span class="h5 text-dark font-weight-bold mr-4">{{news.title}}</span>
                     </div>
                 </router-link>
-                <div class="row">
-                    <span class="h6 text-dark mr-4">{{league.description}}</span>
+                <div class="row" v-if="showDescription">
+                    <span class="h6 text-dark mr-4">{{news.description}}</span>
                 </div>
             </div>
-            <router-link :to="{ name: 'league', params: { id: league.id }}" tag="div" class="cp">
+            <router-link :to="{ name: 'news', params: { id: news.id }}" tag="div" class="cp">
                 <div class="col-auto p-0">
-                    <img class="round image" :src="getImageUrl(league.image)"/>
+                    <img class="round image" :src="getImageUrl(news.image)"/>
                 </div>
             </router-link>
         </div>
         <div class="row px-4 pb-4">
             <div class="col p-0">
-                <span class="h6 text-muted">{{getFormattedTime(league.dateCreated)}}</span>
+                <span class="h6 text-muted">{{getFormattedTime(news.dateCreated)}}</span>
             </div>
             <div class="col-auto p-0">
                 ...
@@ -29,18 +29,22 @@
 </template>
 
 <script>
-    import League from "../models/League";
+    import News from "../../../models/News";
 
     export default {
-        name: 'LeagueListItem',
+        name: 'NewsListItem',
 
         props: {
-            league: League,
+            news: News,
+            showDescription: {
+                type: Boolean,
+                default: true,
+            }
         },
 
         methods: {
             getImageUrl(url) {
-                return require('../assets/' + url);
+                return require('../../../assets/' + url);
             },
 
             getFormattedTime(date) {

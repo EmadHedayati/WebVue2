@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid slider">
+    <div class="container-fluid">
         <div class="row mb-3">
             <div class="col p-0">
                 <span class="h4 text-dark font-weight-bold">{{title}}</span>
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="row">
-            <NewsListItem class="item my-2"
+            <NewsItem class="item my-2"
                           v-for="item in newsList"
                           :news="item"
                           :key="item.id"/>
@@ -18,12 +18,12 @@
 </template>
 
 <script>
-    import NewsListItem from "../NewsListItem";
+    import NewsItem from "../item/NewsItem";
 
     export default {
         name: 'NewsList',
 
-        components: {NewsListItem},
+        components: {NewsItem},
 
         props: {
             newsList: Array,

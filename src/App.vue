@@ -3,12 +3,16 @@
     <div class="row mb-5">
       <HeaderMenu/>
     </div>
-    <router-view/>
+    <transition
+      name="fade"
+      mode="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
 <script>
-  import HeaderMenu from "./components/HeaderMenu";
+  import HeaderMenu from "./components/partials/HeaderMenu";
 
   export default {
     name: 'App',
@@ -17,8 +21,7 @@
       HeaderMenu,
     },
 
-    methods: {
-    }
+    methods: {}
   }
 </script>
 

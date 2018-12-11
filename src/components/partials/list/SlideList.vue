@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import SliderItem from "./SliderItem";
+    import SliderItem from "../item/SlideItem";
 
     export default {
         name: 'Slider',

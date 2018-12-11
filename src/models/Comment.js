@@ -1,39 +1,19 @@
 import Model from "./Model";
 import Account from "./Account";
 
-class News extends Model {
+class Comment extends Model {
     getAttributes(){
         return {
             id: {
                 type: Number,
                 default: ''
             },
-            title: {
-                type: String,
-                default: ''
-            },
-            description: {
-                type: String,
-                default: ''
-            },
             body: {
                 type: String,
                 default: ''
             },
-            image: {
-                type: String,
-                default: ''
-            },
-            tagList: {
-                type: Array,
-                default: ''
-            },
             author: {
                 type: Account,
-                default: ''
-            },
-            commentList: {
-                type: Array,
                 default: ''
             },
             dateCreated: {
@@ -48,4 +28,4 @@ class News extends Model {
     }
 }
 
-export default News;
+export default Comment;

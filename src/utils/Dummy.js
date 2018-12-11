@@ -6,6 +6,12 @@ import Team from "../models/Team";
 import Table from "../models/Table";
 import League from "../models/League";
 import LeagueTeam from "../models/LeagueTeam";
+import Account from "../models/Account";
+import Tag from "../models/Tag";
+import Statistics from "../models/Statistics";
+import Event from "../models/Event";
+import Comment from "../models/Comment";
+import MatchStatistics from "../models/MatchStatistics";
 
 class Dummy {
     static match() {
@@ -18,6 +24,11 @@ class Dummy {
             data: this.randomDate(),
             stadium: this.stadium(),
             live: this.randomBoolean(),
+            matchStatistics: this.matchStatistics(),
+            time: 90,
+            newsList: this.newsList(3),
+            homeEventList: this.eventList(5 + this.randomNumber(10)),
+            awayEventList: this.eventList(5 + this.randomNumber(10)),
             dataCreated: this.randomDate(),
         })
     }
@@ -30,12 +41,56 @@ class Dummy {
         return array;
     }
 
+    static matchStatistics() {
+        return new MatchStatistics({
+            title: this.randomWord(),
+            statisticsList: this.statisticsList(5 + this.randomNumber(3)),
+        })
+    }
+
+    static statistics() {
+        return new Statistics({
+            title: this.randomWord(),
+            homeValue: this.randomNumber(10),
+            awayValue: this.randomNumber(10),
+        })
+    }
+
+    static statisticsList(num) {
+        let array = [];
+        for (let i = 0; i < num; i++) {
+            array.push(this.statistics());
+        }
+        return array;
+    }
+
+    static event(time = 90) {
+        return new Event({
+            description: this.randomParagraph(1, 1),
+            time: 1 + this.randomNumber(time),
+            image: this.randomImage(),
+            important: this.randomBoolean(0.2),
+        })
+    }
+
+    static eventList(num) {
+        let array = [];
+        for (let i = 0; i < num; i++) {
+            array.push(this.event(88));
+        }
+        return array;
+    }
+
     static news() {
         return new News({
             id: this.randomNumber(1000000),
-            title: this.randomTitle(),
+            title: this.randomTitle(5),
             description: this.randomDescription(),
+            body: this.randomParagraph(3 + this.randomNumber(2), 3 + this.randomNumber(10)),
             image: this.randomImage(),
+            tagList: this.tagList(2 + this.randomNumber(4)),
+            author: this.author(),
+            commentList: this.commentList(3 + this.randomNumber(10)),
             dataCreated: this.randomDate(),
         })
     }
@@ -44,6 +99,23 @@ class Dummy {
         let array = [];
         for (let i = 0; i < num; i++) {
             array.push(this.news());
+        }
+        return array;
+    }
+
+    static comment() {
+        return new Comment({
+            id: this.randomNumber(1000000),
+            body: this.randomParagraph(1, 1 + this.randomNumber(1)),
+            author: this.author(),
+            dataCreated: this.randomDate(),
+        })
+    }
+
+    static commentList(num) {
+        let array = [];
+        for (let i = 0; i < num; i++) {
+            array.push(this.comment());
         }
         return array;
     }
@@ -61,7 +133,40 @@ class Dummy {
     static playerList(num) {
         let array = [];
         for (let i = 0; i < num; i++) {
-            array.push(this.player(i));
+            array.push(this.player());
+        }
+        return array;
+    }
+
+    static author() {
+        return new Account({
+            id: this.randomNumber(1000000),
+            title: this.randomWord() + " " + this.randomWord(),
+            description: this.randomDescription(),
+            image: this.randomImage(),
+            dataCreated: this.randomDate(),
+        })
+    }
+
+    static authorList(num) {
+        let array = [];
+        for (let i = 0; i < num; i++) {
+            array.push(this.author());
+        }
+        return array;
+    }
+
+    static tag() {
+        return new Tag({
+            id: this.randomNumber(1000000),
+            title: this.randomWord(),
+        })
+    }
+
+    static tagList(num) {
+        let array = [];
+        for (let i = 0; i < num; i++) {
+            array.push(this.tag());
         }
         return array;
     }
@@ -79,7 +184,7 @@ class Dummy {
     static stadiumList(num) {
         let array = [];
         for (let i = 0; i < num; i++) {
-            array.push(this.stadium(i));
+            array.push(this.stadium());
         }
         return array;
     }
@@ -196,8 +301,8 @@ class Dummy {
         return Math.floor(random);
     }
 
-    static randomBoolean() {
-        return Math.random() > 0.5;
+    static randomBoolean(chance = 0.5) {
+        return Math.random() < chance;
     }
 
     static randomElement(array) {
@@ -228,9 +333,9 @@ class Dummy {
         return faker.lorem.words(1);
     }
 
-    static randomTitle() {
+    static randomTitle(min = 1) {
         var faker = require('faker');
-        return faker.lorem.words(3 + this.randomNumber(4));
+        return faker.lorem.words(min + this.randomNumber(3));
     }
 
     static randomShortTitle() {
@@ -241,6 +346,19 @@ class Dummy {
     static randomDescription() {
         var faker = require('faker');
         return faker.lorem.sentence(15 + this.randomNumber(20));
+    }
+
+    static randomParagraph(paragraphs = 3, sentences = 6) {
+        var faker = require('faker');
+        let result = "";
+        for (let i = 0; i < paragraphs; i++) {
+            for (let j = 0; j < sentences; j++) {
+                result += faker.lorem.paragraphs(1, ' ');
+            }
+            if (i < paragraphs - 1)
+                result += "<br><br>";
+        }
+        return result;
     }
 }
 

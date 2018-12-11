@@ -1,6 +1,7 @@
 import Team from "./Team";
 import Stadium from "./Stadium";
 import Model from "./Model";
+import MatchStatistics from "./MatchStatistics";
 
 class Match extends Model {
     getAttributes() {
@@ -35,6 +36,26 @@ class Match extends Model {
             },
             live: {
                 type: Boolean,
+                default: ''
+            },
+            matchStatistics: {
+                type: MatchStatistics,
+                default: ''
+            },
+            time: {
+                type: Number,
+                default: ''
+            },
+            newsList: {
+                type: Array,
+                default: ''
+            },
+            homeEventList: {
+                type: Array,
+                default: ''
+            },
+            awayEventList: {
+                type: Array,
                 default: ''
             },
             dateCreated: {

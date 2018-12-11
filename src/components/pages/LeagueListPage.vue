@@ -29,7 +29,7 @@
 
 <script>
     import Dummy from "../../utils/Dummy";
-    import LeagueList from "../LeagueList";
+    import LeagueList from "../partials/list/LeagueList";
 
     export default {
         name: 'LeagueListPage',
@@ -48,11 +48,11 @@
 
         methods: {
             getUpcomingLeagueListData: function () {
-                this.upcomingLeagueList = Dummy.leagueList(Dummy.randomNumber(10));
+                this.upcomingLeagueList = Dummy.leagueList(5 + Dummy.randomNumber(10));
             },
 
             getFinishedLeagueListData: function () {
-                this.finishedLeagueList = Dummy.leagueList(Dummy.randomNumber(10));
+                this.finishedLeagueList = Dummy.leagueList(5 + Dummy.randomNumber(10));
             },
 
             searchInData() {

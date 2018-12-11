@@ -21,15 +21,15 @@
             <div class="col-md-3">
                 <div class="row mb-5">
                     <div class="col">
-                        <MatchList :latestMatchList="getLatestMatchListData(3)"
-                                   :favouritesMatchList="getFavouriteMatchListData(5)"
+                        <MatchList :latestMatchList="getLatestMatchListData()"
+                                   :favouritesMatchList="getFavouriteMatchListData()"
                                    title="Football" :singleType="false"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <MatchList :latestMatchList="getLatestMatchListData(7)"
-                                   :favouritesMatchList="getFavouriteMatchListData(4)"
+                        <MatchList :latestMatchList="getLatestMatchListData()"
+                                   :favouritesMatchList="getFavouriteMatchListData()"
                                    title="Football" :singleType="false"/>
                     </div>
                 </div>
@@ -39,9 +39,9 @@
 </template>
 
 <script>
-    import Slider from "../Slider";
-    import NewsList from "../partials/NewsList";
-    import MatchList from "../MatchList";
+    import Slider from "../partials/list/SlideList";
+    import NewsList from "../partials/list/NewsList";
+    import MatchList from "../partials/list/MatchList";
     import Dummy from "../../utils/Dummy";
 
     export default {
@@ -66,12 +66,12 @@
                 return Dummy.newsList(3);
             },
 
-            getLatestMatchListData: function (num) {
-                return Dummy.matchList(num);
+            getLatestMatchListData: function () {
+                return Dummy.matchList(3 + Dummy.randomNumber(4));
             },
 
-            getFavouriteMatchListData: function (num) {
-                return Dummy.matchList(num);
+            getFavouriteMatchListData: function () {
+                return Dummy.matchList(3 + Dummy.randomNumber(4));
             }
         }
     }

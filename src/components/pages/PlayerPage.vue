@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="row mb-5">
-                <div class="col">
+                <div class="col mb-5">
                     <Table :table="statistics"/>
                 </div>
                 <div class="col">
@@ -24,9 +24,9 @@
 </template>
 
 <script>
-    import NewsList from "../partials/NewsList";
+    import NewsList from "../partials/list/NewsList";
     import Dummy from "../../utils/Dummy";
-    import Table from "../Table";
+    import Table from "../partials/Table";
     import AccountBanner from "../partials/AccountBanner";
 
     export default {
@@ -61,11 +61,11 @@
             },
 
             getStatisticsData: function () {
-                this.statistics = Dummy.table(6, 4, 'team');
+                this.statistics = Dummy.table(5, 4, 'team');
             },
 
             getDetailsData: function () {
-                this.details = Dummy.table(4, 5, 'team');
+                this.details = Dummy.table(10, 5, 'team');
             },
 
             updateData() {

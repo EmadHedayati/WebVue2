@@ -1,24 +1,19 @@
 <template>
     <div class="row mb-5">
         <div class="col-md-10 offset-1">
-            <div class="row mx-0 mb-5">
-                <div class="col">
-                    <AccountBanner :account="league"/>
-                </div>
-            </div>
             <div class="row mb-5">
                 <div class="col-md-8">
-                    <MatchDetail :match="league.nextMatch"/>
+                    <MatchDetail :match="match"/>
                 </div>
                 <div class="col-md-4">
-                    <MatchList :latestMatchList="league.matchList"
-                               title="Match List" :singleType="true"/>
+                    <MatchStatisticsList :match="match"/>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <Table :table="league.leagueTeamTable"/>
-                </div>
+            <div class="row my-5">
+                <MatchTimeLine :match="match"/>
+            </div>
+            <div class="row m-0">
+                <NewsList :newsList="match.newsList" title="RELATED NEWS"/>
             </div>
         </div>
     </div>
@@ -28,37 +23,39 @@
     import Dummy from "../../utils/Dummy";
     import Table from "../partials/Table";
     import AccountBanner from "../partials/AccountBanner";
-    import League from "../../models/League";
     import MatchList from "../partials/list/MatchList";
     import MatchDetail from "../partials/MatchDetail";
+    import Match from "../../models/Match";
+    import MatchStatisticsList from "../partials/list/MatchStatisticsList";
+    import MatchTimeLine from "../partials/MatchTimeLine";
+    import NewsList from "../partials/list/NewsList";
 
     export default {
-        name: 'LeaguePage',
+        name: 'MatchPage',
 
         components: {
+            NewsList,
+            MatchTimeLine,
+            MatchStatisticsList,
             MatchDetail,
             MatchList,
             AccountBanner,
             Table,
         },
 
-        props: {
-            table: Table,
-        },
-
         data() {
             return {
-                league: League,
+                match: Match,
             }
         },
 
         methods: {
-            getLeagueData: function () {
-                this.league = Dummy.league();
+            getMatchData: function () {
+                this.match = Dummy.match();
             },
 
             updateData() {
-                this.getLeagueData();
+                this.getMatchData();
             }
         },
 

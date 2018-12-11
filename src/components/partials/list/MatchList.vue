@@ -31,7 +31,7 @@
 </template>
 
 <script>
-    import MatchListItem from "./MatchListItem";
+    import MatchListItem from "../item/MatchItem";
 
     export default {
         name: 'MatchList',

@@ -1,37 +1,53 @@
 .fill-border {
-  background: #ededed;
-  border-radius: 10px;
+    background: #ededed;
+    border-radius: 10px;
 }
 
 .border {
-  border-radius: 10px;
-  border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    border: 1px solid #e2e2e2;
 }
 
 .line {
-  border: 1px solid #e2e2e2;
+    height: 1px;
+    background: #e2e2e2;
 }
 
 .round {
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .circle {
-  border-radius: 1000px;
+    border-radius: 1000px;
 }
 
 .icon-size {
-  width: 20px;
-  height: 20px;
+    width: 20px;
+    height: 20px;
 }
 
 .cp {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
+[debug], [debug] *:not(g):not(path) {
+    color:                 hsla(210, 100%, 100%, 0.9) !important;
+    background:            hsla(210, 100%,  50%, 0.5) !important;
+    outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+
+    box-shadow: none !important;
+    filter:     none !important;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+    transition-duration: 0.3s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0
+}
 

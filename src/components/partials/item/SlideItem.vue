@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import News from "../models/News";
+    import News from "../../../models/News";
 
     export default {
         name: 'News',
@@ -34,7 +34,7 @@
 
         methods: {
             getImageUrl(url) {
-                return require('../assets/' + url);
+                return require('../../../assets/' + url);
             }
         }
     }
@@ -53,12 +53,8 @@
         border-radius: 10px;
         width: 100%;
         height: 100%;
-        bottom: 0px;
         left: 0px;
         top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
         background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
         opacity: .6;
     }
@@ -72,13 +68,5 @@
         width: 100%;
         bottom: 0px;
         left: 0px;
-    }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity 2s;
-    }
-
-    .fade-enter, .fade-leave-to {
-        opacity: 0;
     }
 </style>

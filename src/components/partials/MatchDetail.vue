@@ -60,7 +60,7 @@
 </template>
 
 <script>
-    import Match from "../models/Match";
+    import Match from "../../models/Match";
 
     export default {
         name: "MatchDetail",
@@ -71,7 +71,7 @@
 
         methods: {
             getImageUrl(url) {
-                return require("../assets/" + url);
+                return require("../../assets/" + url);
             },
 
             getFormattedTime(date) {

@@ -5,6 +5,8 @@ import TeamPage from '../components/pages/TeamPage'
 import PlayerPage from '../components/pages/PlayerPage'
 import LeagueListPage from '../components/pages/LeagueListPage'
 import LeaguePage from '../components/pages/LeaguePage'
+import NewsPage from '../components/pages/NewsPage'
+import MatchPage from '../components/pages/MatchPage'
 
 Vue.use(Router)
 
@@ -35,6 +37,18 @@ const routes = [
     path: '/league/:id',
     component: LeaguePage,
     name: 'league',
+    props: true
+  },
+  {
+    path: '/news/:id',
+    component: NewsPage,
+    name: 'news',
+    props: true
+  },
+  {
+    path: '/match/:id',
+    component: MatchPage,
+    name: 'match',
     props: true
   },
 ]

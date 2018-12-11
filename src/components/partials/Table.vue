@@ -3,7 +3,7 @@
         <table class="table m-0">
             <thead>
             <tr>
-                <th class="w-35 h4 font-weight-bold pt-4 pl-4 bottom-border"
+                <th class="h4 font-weight-bold pt-4 pl-4 bottom-border table-header-padding"
                     v-text="table.colList[0]"></th>
                 <th class="text-center h6 text-muted left-bottom-border"
                     v-for="(item, index) in table.colList.slice(1, table.colList.length)"
@@ -40,9 +40,9 @@
 </template>
 
 <script>
-    import Table from "../models/Table";
-    import Team from "../models/Team";
-    import Player from "../models/Player";
+    import Table from "../../models/Table";
+    import Team from "../../models/Team";
+    import Player from "../../models/Player";
 
     export default {
         name: 'Table',
@@ -53,7 +53,7 @@
 
         methods: {
             getImageUrl(url) {
-                return require('../assets/' + url);
+                return require('../../assets/' + url);
             },
 
             getRouterUrl(account) {
@@ -72,7 +72,7 @@
     }
 
     .w-35 {
-        width: 35%;
+        width: 30%;
     }
 
     .no-border {
@@ -103,5 +103,9 @@
     .image {
         width: 20px;
         height: 20px;
+    }
+
+    .table-header-padding {
+        padding-right: 100px;
     }
 </style>

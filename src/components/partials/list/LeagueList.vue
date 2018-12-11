@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid slider">
+    <div class="container-fluid">
         <div class="row mb-3">
             <div class="col p-0">
                 <span class="h4 text-dark font-weight-bold">{{title}}</span>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import LeagueListItem from "./LeagueListItem";
+    import LeagueListItem from "../item/LeagueItem";
 
     export default {
         name: 'LeagueList',

@@ -7,18 +7,21 @@
                     <span class="h6 text-dark font-weight-bold float-left">{{match.homeTeam.shortTitle}}</span>
                 </router-link>
             </div>
-            <div class="col-auto">
-                <div class="row p-0">
-                    <div class="col p-0 text-center">
-                        <span class="h6 text-dark font-weight-bold">{{match.homeScore + " - " + match.awayScore}}</span>
+            <router-link :to="{ name: 'match', params: { id: match.id }}" tag="div" class="cp">
+                <div class="col-auto">
+                    <div class="row p-0">
+                        <div class="col p-0 text-center">
+                            <span
+                                class="h6 text-dark font-weight-bold">{{match.homeScore + " - " + match.awayScore}}</span>
+                        </div>
+                    </div>
+                    <div class="row p-0">
+                        <div class="col p-0 text-center">
+                            <span class="h6 text-muted">{{match.live ? "Live" : getFormattedTime(match.date)}}</span>
+                        </div>
                     </div>
                 </div>
-                <div class="row p-0">
-                    <div class="col p-0 text-center">
-                        <span class="h6 text-muted">{{match.live ? "Live" : getFormattedTime(match.date)}}</span>
-                    </div>
-                </div>
-            </div>
+            </router-link>
             <div class="col">
                 <router-link :to="{ name: 'team', params: { id: match.awayTeam.id }}" tag="div" class="cp">
                     <img class="circle image float-right ml-2" :src="getImageUrl(match.awayTeam.image)"/>
@@ -30,7 +33,7 @@
 </template>
 
 <script>
-    import Match from "../models/Match";
+    import Match from "../../../models/Match";
 
     export default {
         name: "MatchListItem",
@@ -41,7 +44,7 @@
 
         methods: {
             getImageUrl(url) {
-                return require("../assets/" + url);
+                return require("../../../assets/" + url);
             },
 
             getFormattedTime(date) {

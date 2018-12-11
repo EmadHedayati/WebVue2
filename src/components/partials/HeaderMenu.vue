@@ -10,11 +10,11 @@
                         </div>
                     </router-link>
                     <div class="col-md p-0">
-                        <img class="my-3 ml-3 icon-size float-right" src="../assets/icons/baseline-person-24px.svg">
+                        <img class="my-3 ml-3 icon-size float-right" src="../../assets/icons/baseline-person-24px.svg">
                         <router-link to="/league-list" tag="div" class="cp">
-                            <img class="m-3 icon-size float-right" src="../assets/icons/baseline-search-24px.svg">
+                            <img class="m-3 icon-size float-right" src="../../assets/icons/baseline-search-24px.svg">
                         </router-link>
-                        <img class="m-3 icon-size float-right" src="../assets/icons/baseline-home-24px.svg">
+                        <img class="m-3 icon-size float-right" src="../../assets/icons/baseline-home-24px.svg">
                     </div>
                 </div>
             </div>

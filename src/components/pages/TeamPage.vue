@@ -13,12 +13,12 @@
             </div>
             <div class="row mb-5">
                 <div class="col">
-                    <NewsList :newsList="latestNewsList" title="LATEST NEWS"/>
+                    <Table :table="playerList"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <Table :table="playerList"/>
+                    <NewsList :newsList="latestNewsList" title="LATEST NEWS"/>
                 </div>
             </div>
         </div>
@@ -26,9 +26,9 @@
 </template>
 
 <script>
-    import NewsList from "../partials/NewsList";
+    import NewsList from "../partials/list/NewsList";
     import Dummy from "../../utils/Dummy";
-    import Table from "../Table";
+    import Table from "../partials/Table";
     import AccountBanner from "../partials/AccountBanner";
 
     export default {
@@ -67,7 +67,7 @@
             },
 
             getPlayerListData: function () {
-                this.playerList = Dummy.table(10, 5, 'player');
+                this.playerList = Dummy.table(7, 5, 'player');
             },
 
             updateData() {
