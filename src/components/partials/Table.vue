@@ -5,10 +5,11 @@
             <tr>
                 <th class="h4 font-weight-bold pt-4 pl-4 bottom-border table-header-padding"
                     v-text="table.colList[0]"></th>
-                <th class="text-center h6 text-muted left-bottom-border"
+                <th class="text-center h6 text-muted left-bottom-border cp"
                     v-for="(item, index) in table.colList.slice(1, table.colList.length)"
                     :key="index"
-                    v-text="item"></th>
+                    v-text="item"
+                    @click="sortBy(index + 1)"></th>
             </tr>
             </thead>
             <tbody>
@@ -61,6 +62,10 @@
                     return {name: 'team', params: {id: account.id}};
                 if (account instanceof Player)
                     return {name: 'player', params: {id: account.id}};
+            },
+
+            sortBy(columnIndex) {
+                this.table.sortBy(columnIndex);
             }
         },
     }

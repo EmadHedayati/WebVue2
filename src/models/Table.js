@@ -17,6 +17,10 @@ class Table extends Model {
     constructor(attributes) {
         super(attributes);
     }
+
+    sortBy(columnIndex) {
+        this.rowList.sort( (a, b) => { return a[columnIndex].localeCompare(b[columnIndex]); });
+    }
 }
 
 export default Table;
