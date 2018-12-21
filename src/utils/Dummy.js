@@ -76,7 +76,7 @@ class Dummy {
     static eventList(num) {
         let array = [];
         for (let i = 0; i < num; i++) {
-            array.push(this.event(88));
+            array.push(this.event());
         }
         return array;
     }
