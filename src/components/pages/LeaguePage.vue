@@ -31,6 +31,7 @@
     import League from "../../models/League";
     import MatchList from "../partials/list/MatchList";
     import MatchDetail from "../partials/MatchDetail";
+    import LeagueService from "../../webservices/LeagueService";
 
     export default {
         name: 'LeaguePage',
@@ -53,11 +54,18 @@
         },
 
         methods: {
+            getLeaguePageData: function () {
+                LeagueService.get().then((response) => {
+                    this.league = response.data.league;
+                });
+            },
+
             getLeagueData: function () {
                 this.league = Dummy.league();
             },
 
             updateData() {
+                // this.getLeaguePageData();
                 this.getLeagueData();
             }
         },

@@ -51,29 +51,26 @@
     import News from "../../models/News";
     import CommentList from "../partials/list/CommentList";
     import NewsList from "../partials/list/NewsList";
+    import NewsService from "../../webservices/NewsService";
 
     export default {
         name: 'NewsPage',
         components: {NewsList, CommentList},
-        props: {
-            news: News,
-        },
 
         data() {
             return {
                 imageHeight: 0,
+                news: News,
                 relatedNewsList: [],
             }
         },
 
         methods: {
-            setImageHeight(event, ratio) {
-                let image = event.target;
-                this.imageHeight = image.clientWidth * ratio;
-            },
-
-            getImageUrl(url) {
-                return require('../../assets/' + url);
+            getNewsPageData: function () {
+                NewsService.get().then((response) => {
+                    this.news = response.data.news;
+                    this.relatedNewsList = response.data.relatedNewsList;
+                });
             },
 
             getNewsData: function () {
@@ -98,7 +95,17 @@
                 return tmp.toDateString();
             },
 
+            setImageHeight(event, ratio) {
+                let image = event.target;
+                this.imageHeight = image.clientWidth * ratio;
+            },
+
+            getImageUrl(url) {
+                return require('../../assets/' + url);
+            },
+
             updateData() {
+                // this.getNewsPageData();
                 this.getNewsData();
                 this.getRelatedNewsData()
             }

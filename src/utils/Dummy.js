@@ -26,7 +26,6 @@ class Dummy {
             live: this.randomBoolean(),
             matchStatistics: this.matchStatistics(),
             time: 90,
-            newsList: this.newsList(3),
             homeEventList: this.eventList(5 + this.randomNumber(10)),
             awayEventList: this.eventList(5 + this.randomNumber(10)),
             dataCreated: this.randomDate(),

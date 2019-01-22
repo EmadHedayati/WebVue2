@@ -22,47 +22,47 @@
                 </div>
             </div>
             <div class="row center-events m-0 p-0">
-                <div class="row time-line-container m-0 mr-3">
+                <div class="row time-line-container my-0 mx-3">
                     <div class="row top-event align-items-center justify-content-center p-0 m-0"
                          v-for="(item, index) in match.homeEventList"
                          :key="index * 4 + 0"
                          v-show="item.important"
-                         :style="{ left: getLeft(item) }">
+                         :style="{ left: (((item.time - 2) * 100) / match.time) + '%' }">
                         <div class="col-auto p-0 m-0">
-                            <img class="circle event-image" :src="getImageUrl(item.image)"/>
+                            <img class="circle image" :src="getImageUrl(item.image)"/>
                         </div>
                     </div>
                     <div class="row top-minute align-items-center justify-content-center p-0 m-0"
                          v-for="(item, index) in match.homeEventList"
                          :key="index * 4 + 1"
                          v-show="item.important"
-                         :style="{ left: getLeft(item) }">
+                         :style="{ left: (((item.time - 2) * 100) / match.time) + '%' }">
                         <div class="col-auto p-0 m-0">
-                            <span class="minute-text text-dark font-weight-bold m-0 p-0">{{item.time}}</span>
+                            <span class="h6 text-dark font-weight-bold m-0 p-0">{{item.time + "'"}}</span>
                         </div>
                     </div>
                     <div class="row bottom-event align-items-center justify-content-center p-0 m-0"
                          v-for="(item, index) in match.awayEventList"
                          :key="index * 4 + 2"
                          v-show="item.important"
-                         :style="{ left: getLeft(item) }">
+                         :style="{ right: (((match.time - item.time - 2) * 100) / match.time) + '%' }">
                         <div class="col-auto p-0 m-0">
-                            <img class="circle event-image" :src="getImageUrl(item.image)"/>
+                            <img class="circle image" :src="getImageUrl(item.image)"/>
                         </div>
                     </div>
                     <div class="row bottom-minute align-items-center justify-content-center p-0 m-0"
                          v-for="(item, index) in match.awayEventList"
                          :key="index * 4 + 3"
                          v-show="item.important"
-                         :style="{ left: getLeft(item) }">
+                         :style="{ right: (((match.time - item.time - 2) * 100) / match.time) + '%' }">
                         <div class="col-auto p-0 m-0">
-                            <span class="minute-text text-dark font-weight-bold m-0 p-0">{{item.time}}</span>
+                            <span class="h6 text-dark font-weight-bold m-0 p-0">{{item.time + "'"}}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row commentary-container my-5">
+        <div class="row commentary-container mt-5">
             <div class="col">
                 <div class="row mb-3"
                      v-for="(item, index) in getCombinedEventList()"
@@ -102,11 +102,7 @@
                 merged = merged.concat(this.match.homeEventList, this.match.awayEventList);
                 merged.sort(function (a, b) { return a.time - b.time });
                 return merged;
-            },
-
-            getLeft(event) {
-                return (((event.time - 1) * 100) / this.match.time) + '%';
-            },
+            }
         }
     }
 </script>
@@ -161,7 +157,7 @@
         width: 30px;
         height: 30px;
         left: 0px;
-        top: 10px;
+        top: 0px;
     }
 
     .bottom-header {
@@ -176,8 +172,8 @@
         position: absolute;
         width: 30px;
         height: 30px;
-        left: 0px;
-        bottom: 10px;
+        right: 0px;
+        bottom: 0px;
     }
 
     .top-minute {
@@ -194,17 +190,8 @@
         width: 30px;
         height: 30px;
         text-align: center;
-        left: 0px;
+        right: 0px;
         top: 40px;
-    }
-
-    .minute-text {
-        font-size: 0.5rem;
-    }
-
-    .event-image {
-        width: 15px;
-        height: 15px;
     }
 
     .image {

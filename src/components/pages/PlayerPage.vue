@@ -8,10 +8,10 @@
             </div>
             <div class="row mb-5">
                 <div class="col mb-5">
-                    <Table :table="statistics"/>
+                    <Table :table="statisticsTable"/>
                 </div>
                 <div class="col">
-                    <Table :table="details"/>
+                    <Table :table="detailsTable"/>
                 </div>
             </div>
             <div class="row">
@@ -28,6 +28,7 @@
     import Dummy from "../../utils/Dummy";
     import Table from "../partials/Table";
     import AccountBanner from "../partials/AccountBanner";
+    import PlayerService from "../../webservices/PlayerService";
 
     export default {
         name: 'PlayerPage',
@@ -46,12 +47,21 @@
             return {
                 player: {},
                 latestNewsList: [],
-                statistics: {},
-                details: {},
+                statisticsTable: {},
+                detailsTable: {},
             }
         },
 
         methods: {
+            getPlayerPageData: function () {
+                PlayerService.get().then((response) => {
+                    this.player = response.data.player;
+                    this.latestNewsList = response.data.latestNewsList;
+                    this.statisticsTable = response.data.statisticsTable;
+                    this.detailsTable = response.data.detailsTable;
+                });
+            },
+
             getPlayerData: function () {
                 this.player = Dummy.player();
             },
@@ -61,14 +71,15 @@
             },
 
             getStatisticsData: function () {
-                this.statistics = Dummy.table(5, 4, 'team');
+                this.statisticsTable = Dummy.table(5, 4, 'team');
             },
 
             getDetailsData: function () {
-                this.details = Dummy.table(10, 5, 'team');
+                this.detailsTable = Dummy.table(10, 5, 'team');
             },
 
             updateData() {
+                // this.getPlayerPageData();
                 this.getPlayerData();
                 this.getLatestNewsListData();
                 this.getStatisticsData();

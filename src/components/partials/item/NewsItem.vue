@@ -2,7 +2,7 @@
     <div class="container-fluid border">
         <div class="row p-4">
             <div class="col">
-                <router-link :to="{ name: 'news', params: { id: news.id }}" tag="div" class="cp">
+                <router-link :to="{ name: 'news', params: { newsId: news.id }}" tag="div" class="cp">
                     <div class="row">
                         <span class="h5 text-dark font-weight-bold mr-4">{{news.title}}</span>
                     </div>
@@ -11,7 +11,7 @@
                     <span class="h6 text-dark mr-4">{{news.description}}</span>
                 </div>
             </div>
-            <router-link :to="{ name: 'news', params: { id: news.id }}" tag="div" class="cp">
+            <router-link :to="{ name: 'news', params: { newsId: news.id }}" tag="div" class="cp">
                 <div class="col-auto p-0">
                     <img class="round image" :src="getImageUrl(news.image)"/>
                 </div>

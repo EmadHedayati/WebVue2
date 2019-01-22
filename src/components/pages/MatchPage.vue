@@ -13,7 +13,7 @@
                 <MatchTimeLine :match="match"/>
             </div>
             <div class="row m-0">
-                <NewsList :newsList="match.newsList" title="RELATED NEWS"/>
+                <NewsList :newsList="latestNewsList" title="LATEST NEWS"/>
             </div>
         </div>
     </div>
@@ -29,6 +29,7 @@
     import MatchStatisticsList from "../partials/list/MatchStatisticsList";
     import MatchTimeLine from "../partials/MatchTimeLine";
     import NewsList from "../partials/list/NewsList";
+    import MatchService from "../../webservices/MatchService";
 
     export default {
         name: 'MatchPage',
@@ -46,16 +47,30 @@
         data() {
             return {
                 match: Match,
+                latestNewsList: [],
             }
         },
 
         methods: {
+            getMatchPageData: function () {
+                MatchService.get().then((response) => {
+                    this.match = response.data.match;
+                    this.latestNewsList = response.data.latestNewsList;
+                });
+            },
+
             getMatchData: function () {
                 this.match = Dummy.match();
             },
 
+            getLatestNewsListData: function () {
+                this.latestNewsList = Dummy.newsList(3);
+            },
+
             updateData() {
+                // this.getMatchPageData();
                 this.getMatchData();
+                this.getLatestNewsListData();
             }
         },
 

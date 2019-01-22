@@ -59,9 +59,9 @@
 
             getRouterUrl(account) {
                 if (account instanceof Team)
-                    return {name: 'team', params: {id: account.id}};
+                    return {name: 'team', params: {teamId: account.id}};
                 if (account instanceof Player)
-                    return {name: 'player', params: {id: account.id}};
+                    return {name: 'player', params: {playerId: account.id}};
             },
 
             sortBy(columnIndex) {

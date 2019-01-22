@@ -8,12 +8,12 @@
             </div>
             <div class="row mb-5">
                 <div class="col">
-                    <Table :table="matchList"/>
+                    <Table :table="matchesTable"/>
                 </div>
             </div>
             <div class="row mb-5">
                 <div class="col">
-                    <Table :table="playerList"/>
+                    <Table :table="playersTable"/>
                 </div>
             </div>
             <div class="row">
@@ -30,6 +30,8 @@
     import Dummy from "../../utils/Dummy";
     import Table from "../partials/Table";
     import AccountBanner from "../partials/AccountBanner";
+    import TeamService from "../../webservices/TeamService";
+    import axios from 'axios'
 
     export default {
         name: 'TeamPage',
@@ -40,41 +42,48 @@
             NewsList,
         },
 
-        props: {
-            table: Table,
-        },
-
         data() {
             return {
                 team: {},
                 latestNewsList: [],
-                matchList: [],
-                playerList: [],
+                matchesTable: [],
+                playersTable: [],
             }
         },
 
         methods: {
+            getTeamPageData: function () {
+                TeamService.get().then((response) => {
+                    this.team = response.data.team;
+                    this.latestNewsList = response.data.latestNewsList;
+                    this.matchesTable = response.data.matchesTable;
+                    this.playersTable = response.data.playersTable;
+                });
+            },
+
             getTeamData: function () {
                 this.team = Dummy.team();
+                // TeamService.get({teamId: this.$route.params.id}).then((response) => this.team = response);
             },
 
             getLatestNewsListData: function () {
                 this.latestNewsList = Dummy.newsList(3);
             },
 
-            getMatchListData: function () {
-                this.matchList = Dummy.table(5, 3, 'team');
+            getMatchesTableData: function () {
+                this.matchesTable = Dummy.table(5, 3, 'team');
             },
 
-            getPlayerListData: function () {
-                this.playerList = Dummy.table(7, 5, 'player');
+            getPlayersTableData: function () {
+                this.playersTable = Dummy.table(7, 5, 'player');
             },
 
             updateData() {
+                // this.getTeamPageData();
                 this.getTeamData();
                 this.getLatestNewsListData();
-                this.getMatchListData();
-                this.getPlayerListData();
+                this.getMatchesTableData();
+                this.getPlayersTableData();
             }
         },
 

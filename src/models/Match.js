@@ -46,10 +46,6 @@ class Match extends Model {
                 type: Number,
                 default: ''
             },
-            newsList: {
-                type: Array,
-                default: ''
-            },
             homeEventList: {
                 type: Array,
                 default: ''

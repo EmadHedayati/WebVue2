@@ -16,13 +16,13 @@ const routes = [
     component: HomePage,
   },
   {
-    path: '/team/:id',
+    path: '/teams/:teamId',
     component: TeamPage,
     name: 'team',
     props: true
   },
   {
-    path: '/player/:id',
+    path: '/players/:playerId',
     component: PlayerPage,
     name: 'player',
     props: true
@@ -34,19 +34,19 @@ const routes = [
     props: true
   },
   {
-    path: '/league/:id',
+    path: '/leagues/:leagueId',
     component: LeaguePage,
     name: 'league',
     props: true
   },
   {
-    path: '/news/:id',
+    path: '/news/:newsId',
     component: NewsPage,
     name: 'news',
     props: true
   },
   {
-    path: '/match/:id',
+    path: '/matches/:matchId',
     component: MatchPage,
     name: 'match',
     props: true

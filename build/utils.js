@@ -31,8 +31,8 @@ exports.cssLoaders = function (options) {
 
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
-    const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
-    // const loaders = options.usePostCSS ? [cssLoader, {loader: 'rtl-loader'}, postcssLoader] : [cssLoader, {loader: 'rtl-loader'}]
+    // const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+    const loaders = options.usePostCSS ? [cssLoader, {loader: 'rtl-loader'}, postcssLoader] : [cssLoader, {loader: 'rtl-loader'}]
 
     if (loader) {
       loaders.push({

@@ -30,6 +30,7 @@
 <script>
     import Dummy from "../../utils/Dummy";
     import LeagueList from "../partials/list/LeagueList";
+    import LeagueService from "../../webservices/LeagueService";
 
     export default {
         name: 'LeagueListPage',
@@ -47,6 +48,13 @@
         },
 
         methods: {
+            getLeagueListPageData: function (query) {
+                LeagueService.index(query).then((response) => {
+                    this.upcomingLeagueList = response.data.upcomingLeagueList;
+                    this.finishedLeagueList = response.data.finishedLeagueList;
+                });
+            },
+
             getUpcomingLeagueListData: function () {
                 this.upcomingLeagueList = Dummy.leagueList(5 + Dummy.randomNumber(10));
             },
@@ -56,10 +64,12 @@
             },
 
             searchInData() {
-                this.updateData();
+                this.updateData({q: this.searchText});
             },
 
-            updateData() {
+            updateData(query) {
+                this.searchText = 'Search in here...';
+                // this.getLeagueListPageData(query);
                 this.getUpcomingLeagueListData();
                 this.getFinishedLeagueListData();
             }
@@ -82,6 +92,7 @@
         background: white;
         border: white;
     }
+
     .search:focus {
         background: white;
         border: white;
