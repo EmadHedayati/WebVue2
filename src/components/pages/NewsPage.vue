@@ -60,8 +60,8 @@
         data() {
             return {
                 imageHeight: 0,
-                news: News,
-                relatedNewsList: [],
+                news: Object,
+                relatedNewsList: Array,
             }
         },
 

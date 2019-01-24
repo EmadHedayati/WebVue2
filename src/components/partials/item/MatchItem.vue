@@ -39,7 +39,7 @@
         name: "MatchListItem",
 
         props: {
-            match: Match
+            match: Object
         },
 
         methods: {

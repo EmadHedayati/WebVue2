@@ -44,10 +44,10 @@
 
         data() {
             return {
-                team: {},
-                latestNewsList: [],
-                matchesTable: [],
-                playersTable: [],
+                team: Object,
+                latestNewsList: Array,
+                matchesTable: Object,
+                playersTable: Object,
             }
         },
 
@@ -57,6 +57,7 @@
                     this.team = response.team;
                     this.latestNewsList = response.latestNewsList;
                     this.matchesTable = response.matchesTable;
+                    // console.log(this.matchesTable.rowList[0][0].title)
                     this.playersTable = response.playersTable;
                 });
             },

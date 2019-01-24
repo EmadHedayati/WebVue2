@@ -30,7 +30,7 @@
         name: 'AccountBanner',
 
         props: {
-            account: Account
+            account: Object
         },
 
         methods: {

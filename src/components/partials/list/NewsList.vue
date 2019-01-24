@@ -10,9 +10,9 @@
         </div>
         <div class="row">
             <NewsItem class="item my-2"
-                          v-for="item in newsList"
-                          :news="item"
-                          :key="item.id"/>
+                      v-for="item in newsList"
+                      :news="item"
+                      :key="item.id"/>
         </div>
     </div>
 </template>

@@ -42,8 +42,8 @@
         data() {
             return {
                 searchText: 'Search in here...',
-                upcomingLeagueList: [],
-                finishedLeagueList: [],
+                upcomingLeagueList: Array,
+                finishedLeagueList: Array,
             }
         },
 

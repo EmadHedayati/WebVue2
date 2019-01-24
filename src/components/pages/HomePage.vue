@@ -2,7 +2,7 @@
     <div>
         <div class="row mb-5">
             <div class="col-md-10 offset-1">
-                <Slider :newsList="sliderNewsList"/>
+                <SlideList :newsList="sliderNewsList"/>
             </div>
         </div>
         <!--<div class="row mb-5">-->
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-    import Slider from "../partials/list/SlideList";
+    import SlideList from "../partials/list/SlideList";
     import NewsList from "../partials/list/NewsList";
     import MatchList from "../partials/list/MatchList";
     import Dummy from "../../utils/Dummy";
@@ -63,18 +63,18 @@
             Lottie,
             MatchList,
             NewsList,
-            Slider,
+            SlideList,
         },
 
         data() {
             return {
                 // defaultOptions: {animationData: require('../../assets/dogrun.zip')},
                 animationSpeed: 1,
-                sliderNewsList: [],
-                latestNewsList: [],
-                favouriteNewsList: [],
-                footballMatchList: {},
-                basketballMatchList: {},
+                sliderNewsList: Array,
+                latestNewsList: Array,
+                favouriteNewsList: Array,
+                footballMatchList: Object,
+                basketballMatchList: Object,
             }
         },
 

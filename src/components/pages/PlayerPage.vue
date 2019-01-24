@@ -45,10 +45,10 @@
 
         data() {
             return {
-                player: {},
-                latestNewsList: [],
-                statisticsTable: {},
-                detailsTable: {},
+                player: Object,
+                latestNewsList: Array,
+                statisticsTable: Object,
+                detailsTable: Object,
             }
         },
 

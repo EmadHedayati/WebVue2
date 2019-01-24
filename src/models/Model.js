@@ -33,11 +33,16 @@ class Model {
                 if (value.constructor !== attribute.type) {
                     throw new Error('Type mismatch exception for attribute ' + name + ', expected ' + attribute.type + ', got ' + value.constructor)
                 }
+                if (attribute.type instanceof Model) {
+                    value = new attribute.type(value)
+                }
             } else if (attribute.required) {
                 throw new Error(`The ${name} attribute must be presents`)
             } else {
-                if (attribute.type === Array || attribute.type === Object) {
-                    value = attribute.default()
+                if (attribute.type === Array) {
+                    value = []
+                } else if (attribute.type === Object) {
+                    value = {}
                 } else {
                     value = attribute.default
                 }

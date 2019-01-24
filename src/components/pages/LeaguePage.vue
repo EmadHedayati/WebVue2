@@ -44,7 +44,7 @@
         },
 
         props: {
-            table: Table,
+            table: Object,
         },
 
         data() {

@@ -24,7 +24,7 @@
         name: 'CommentItem',
 
         props: {
-            comment: Comment,
+            comment: Object,
         },
 
         methods: {

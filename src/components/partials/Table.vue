@@ -18,13 +18,13 @@
                 <th scope="row"
                     class="text-dark font-weight-normal pl-4 no-border"
                     :class="[rowIndex === 0 ? 'pt-4' : '', rowIndex === table.rowList.length - 1 ? 'pb-4' : '']">
-                    <router-link :to="getRouterUrl(row[0])" tag="div" class="cp">
+                    <router-link :to="getRouterUrl(table.rowList[rowIndex][0])" tag="div" class="cp">
                         <div class="row">
                             <div class="col-auto py-0 px-2">
-                                <img class="circle image ml-2" :src="row[0].image"/>
+                                <img class="circle image ml-2" :src="table.rowList[rowIndex][0].image"/>
                             </div>
                             <div class="col py-0 pl-2 pr-4 align-items-start">
-                                <span class="h6 text-dark font-weight-bold">{{row[0].title}}</span>
+                                <span class="h6 text-dark font-weight-bold">{{table.rowList[rowIndex][0].title}}</span>
                             </div>
                         </div>
                     </router-link>
@@ -49,7 +49,7 @@
         name: 'Table',
 
         props: {
-            table: Table,
+            table: Object,
         },
 
         methods: {
@@ -60,8 +60,22 @@
                     return {name: 'player', params: {playerId: account.id}};
             },
 
+            alert() {
+                console.log(this.table.toString())
+            },
+
             sortBy(columnIndex) {
                 this.table.sortBy(columnIndex);
+            }
+        },
+
+        created: function() {
+            this.alert();
+        },
+
+        watch: {
+            '$route' () {
+                this.alert();
             }
         },
     }

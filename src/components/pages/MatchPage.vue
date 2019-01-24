@@ -46,8 +46,8 @@
 
         data() {
             return {
-                match: Match,
-                latestNewsList: [],
+                match: Object,
+                latestNewsList: Array,
             }
         },
 

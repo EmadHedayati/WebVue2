@@ -35,7 +35,7 @@
         name: 'NewsListItem',
 
         props: {
-            news: News,
+            news: Object,
             showDescription: {
                 type: Boolean,
                 default: true,

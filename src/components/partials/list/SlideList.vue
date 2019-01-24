@@ -18,7 +18,7 @@
     import SliderItem from "../item/SlideItem";
 
     export default {
-        name: 'Slider',
+        name: 'SliderList',
 
         components: {SliderItem},
 
@@ -46,7 +46,12 @@
             showItem: function (index) {
                 this.currentItem = index;
             }
-        }
+        },
+
+        created: function () {
+            console.log("her her inside")
+            console.log(this.newsList)
+        },
     }
 </script>
 

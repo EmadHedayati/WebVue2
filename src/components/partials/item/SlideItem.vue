@@ -29,7 +29,7 @@
         name: 'News',
 
         props: {
-            news: News
+            news: Object
         },
 
         methods: {
