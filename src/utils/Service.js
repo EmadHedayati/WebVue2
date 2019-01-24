@@ -26,7 +26,7 @@ export default class Service {
 
     createFinalUrl({name, params, query}) {
         query = query || {}
-        name = url || ''
+        name = name || ''
         params = params || {}
         let parts = name.split('.')
         let route = Routes
@@ -47,7 +47,8 @@ export default class Service {
         })
 
         let queryString = this.createQueryString(query)
-        return segments.join('/') + (queryString.length ? ('?' + queryString(query)) : '')
+        let BASE_URL = '/api/'
+        return BASE_URL + segments.join('/') + (queryString.length ? ('?' + queryString(query)) : '')
     }
 
     createQueryString(query) {

@@ -53,17 +53,16 @@
 
         methods: {
             getTeamPageData: function () {
-                TeamService.get().then((response) => {
-                    this.team = response.data.team;
-                    this.latestNewsList = response.data.latestNewsList;
-                    this.matchesTable = response.data.matchesTable;
-                    this.playersTable = response.data.playersTable;
+                new TeamService().get(this.$route.params.teamId).then((response) => {
+                    this.team = response.team;
+                    this.latestNewsList = response.latestNewsList;
+                    this.matchesTable = response.matchesTable;
+                    this.playersTable = response.playersTable;
                 });
             },
 
             getTeamData: function () {
                 this.team = Dummy.team();
-                // TeamService.get({teamId: this.$route.params.id}).then((response) => this.team = response);
             },
 
             getLatestNewsListData: function () {
@@ -79,11 +78,11 @@
             },
 
             updateData() {
-                // this.getTeamPageData();
-                this.getTeamData();
-                this.getLatestNewsListData();
-                this.getMatchesTableData();
-                this.getPlayersTableData();
+                this.getTeamPageData();
+                // this.getTeamData();
+                // this.getLatestNewsListData();
+                // this.getMatchesTableData();
+                // this.getPlayersTableData();
             }
         },
 

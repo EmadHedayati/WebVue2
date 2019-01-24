@@ -2,7 +2,7 @@
     <div class="container-fluid fill-border">
         <div class="row p-3">
             <div class="col-auto p-0 mr-3">
-                <img class="circle author-image" :src="getImageUrl(comment.author.image)"/>
+                <img class="circle author-image" :src="comment.author.image"/>
             </div>
             <div class="col align-self-center">
                 <div class="row">
@@ -28,10 +28,6 @@
         },
 
         methods: {
-            getImageUrl(url) {
-                return require('../../../assets/' + url);
-            },
-
             getFormattedTime(date) {
                 var tmp = new Date();
                 tmp.setTime(date);

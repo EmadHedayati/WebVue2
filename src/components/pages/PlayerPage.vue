@@ -54,11 +54,11 @@
 
         methods: {
             getPlayerPageData: function () {
-                PlayerService.get().then((response) => {
-                    this.player = response.data.player;
-                    this.latestNewsList = response.data.latestNewsList;
-                    this.statisticsTable = response.data.statisticsTable;
-                    this.detailsTable = response.data.detailsTable;
+                new PlayerService().get(this.$route.params.playerId).then((response) => {
+                    this.player = response.player;
+                    this.latestNewsList = response.latestNewsList;
+                    this.statisticsTable = response.statisticsTable;
+                    this.detailsTable = response.detailsTable;
                 });
             },
 
@@ -79,11 +79,11 @@
             },
 
             updateData() {
-                // this.getPlayerPageData();
-                this.getPlayerData();
-                this.getLatestNewsListData();
-                this.getStatisticsData();
-                this.getDetailsData();
+                this.getPlayerPageData();
+                // this.getPlayerData();
+                // this.getLatestNewsListData();
+                // this.getStatisticsData();
+                // this.getDetailsData();
             }
         },
 

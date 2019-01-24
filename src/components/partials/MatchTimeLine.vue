@@ -11,13 +11,13 @@
             </div>
             <div class="row top-header align-items-center justify-content-center">
                 <div class="col-auto">
-                    <img class="circle image float-left mr-2" :src="getImageUrl(match.homeTeam.image)"/>
+                    <img class="circle image float-left mr-2" :src="match.homeTeam.image"/>
                     <span class="h6 text-dark font-weight-bold float-left m-0">{{match.homeTeam.shortTitle}}</span>
                 </div>
             </div>
             <div class="row bottom-header align-items-center justify-content-center">
                 <div class="col-auto">
-                    <img class="circle image float-right ml-2" :src="getImageUrl(match.awayTeam.image)"/>
+                    <img class="circle image float-right ml-2" :src="match.awayTeam.image"/>
                     <span class="h6 text-dark font-weight-bold float-right m-0">{{match.awayTeam.shortTitle}}</span>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                          v-show="item.important"
                          :style="{ left: (((item.time - 2) * 100) / match.time) + '%' }">
                         <div class="col-auto p-0 m-0">
-                            <img class="circle image" :src="getImageUrl(item.image)"/>
+                            <img class="circle image" :src="item.image"/>
                         </div>
                     </div>
                     <div class="row top-minute align-items-center justify-content-center p-0 m-0"
@@ -47,7 +47,7 @@
                          v-show="item.important"
                          :style="{ right: (((match.time - item.time - 2) * 100) / match.time) + '%' }">
                         <div class="col-auto p-0 m-0">
-                            <img class="circle image" :src="getImageUrl(item.image)"/>
+                            <img class="circle image" :src="item.image"/>
                         </div>
                     </div>
                     <div class="row bottom-minute align-items-center justify-content-center p-0 m-0"
@@ -68,7 +68,7 @@
                      v-for="(item, index) in getCombinedEventList()"
                      :key="index">
                     <div class="col-auto mr-3 p-0">
-                        <img class="circle image" :src="getImageUrl(item.image)"/>
+                        <img class="circle image" :src="item.image"/>
                     </div>
                     <div class="col mr-3">
                         <span class="h6 text-dark font-weight-bold m-0 p-0">{{item.description}}</span>
@@ -93,10 +93,6 @@
         },
 
         methods: {
-            getImageUrl(url) {
-                return require('../../assets/' + url);
-            },
-
             getCombinedEventList() {
                 let merged = [];
                 merged = merged.concat(this.match.homeEventList, this.match.awayEventList);

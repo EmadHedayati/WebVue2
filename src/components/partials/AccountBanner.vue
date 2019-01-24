@@ -1,11 +1,11 @@
 <template>
     <div class="row align-items-md-end round background">
-        <img class="round image" :src="getImageUrl(account.image)">
+        <img class="round image" :src="account.backgroundImage">
         <div class="image-gradient">
         </div>
         <div class="row bottom">
             <div class="col-auto my-4 ml-4 align-self-end">
-                <img class="circle account-image" :src="getImageUrl(account.image)"/>
+                <img class="circle account-image" :src="account.image"/>
             </div>
             <div class="col-md-8 my-4 align-self-center">
                 <div class="row mb-2">
@@ -34,9 +34,6 @@
         },
 
         methods: {
-            getImageUrl(url) {
-                return require('../../assets/' + url);
-            }
         }
     }
 </script>

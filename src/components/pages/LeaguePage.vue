@@ -55,8 +55,9 @@
 
         methods: {
             getLeaguePageData: function () {
-                LeagueService.get().then((response) => {
-                    this.league = response.data.league;
+                new LeagueService().get(this.$route.params.leagueId).then((response) => {
+                    console.log(response)
+                    this.league = response.league;
                 });
             },
 
@@ -65,8 +66,8 @@
             },
 
             updateData() {
-                // this.getLeaguePageData();
-                this.getLeagueData();
+                this.getLeaguePageData();
+                // this.getLeagueData();
             }
         },
 

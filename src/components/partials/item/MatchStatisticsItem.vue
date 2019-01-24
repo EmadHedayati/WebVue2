@@ -29,10 +29,6 @@
         },
 
         methods: {
-            getImageUrl(url) {
-                return require("../../../assets/" + url);
-            },
-
             getFormattedTime(date) {
                 var days = [
                     "Sunday",

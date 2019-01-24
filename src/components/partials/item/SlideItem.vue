@@ -1,7 +1,7 @@
 <template>
     <transition name="fade">
         <div class="row align-items-md-end round">
-            <img class="round image" :src="getImageUrl(news.image)">
+            <img class="round image" :src="news.image">
             <div class="image-gradient">
             </div>
             <div class="bottom">
@@ -33,9 +33,6 @@
         },
 
         methods: {
-            getImageUrl(url) {
-                return require('../../../assets/' + url);
-            }
         }
     }
 </script>

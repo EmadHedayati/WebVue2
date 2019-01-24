@@ -53,9 +53,9 @@
 
         methods: {
             getMatchPageData: function () {
-                MatchService.get().then((response) => {
-                    this.match = response.data.match;
-                    this.latestNewsList = response.data.latestNewsList;
+                new MatchService().get(this.$route.params.matchId).then((response) => {
+                    this.match = response.match;
+                    this.latestNewsList = response.latestNewsList;
                 });
             },
 
@@ -68,9 +68,9 @@
             },
 
             updateData() {
-                // this.getMatchPageData();
-                this.getMatchData();
-                this.getLatestNewsListData();
+                this.getMatchPageData();
+                // this.getMatchData();
+                // this.getLatestNewsListData();
             }
         },
 

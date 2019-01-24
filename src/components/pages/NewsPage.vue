@@ -10,7 +10,7 @@
                     </div>
                     <div class="row">
                         <div class="col-auto p-0 mr-3">
-                            <img class="circle author-image" :src="getImageUrl(news.author.image)"/>
+                            <img class="circle author-image" :src="news.author.image"/>
                         </div>
                         <div class="col align-self-center">
                             <div class="row">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="col ml-3 p-0">
-                    <img class="news-image border" :src="getImageUrl(news.image)"
+                    <img class="news-image border" :src="news.image"
                          @load="setImageHeight($event, (10/16))" :style="{ height: imageHeight + 'px' }"/>
                 </div>
             </div>
@@ -67,9 +67,9 @@
 
         methods: {
             getNewsPageData: function () {
-                NewsService.get().then((response) => {
-                    this.news = response.data.news;
-                    this.relatedNewsList = response.data.relatedNewsList;
+                new NewsService().get(this.$route.params.newsId).then((response) => {
+                    this.news = response.news;
+                    this.relatedNewsList = response.relatedNewsList;
                 });
             },
 
@@ -100,14 +100,10 @@
                 this.imageHeight = image.clientWidth * ratio;
             },
 
-            getImageUrl(url) {
-                return require('../../assets/' + url);
-            },
-
             updateData() {
-                // this.getNewsPageData();
-                this.getNewsData();
-                this.getRelatedNewsData()
+                this.getNewsPageData();
+                // this.getNewsData();
+                // this.getRelatedNewsData()
             }
         },
 

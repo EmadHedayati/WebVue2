@@ -49,9 +49,9 @@
 
         methods: {
             getLeagueListPageData: function (query) {
-                LeagueService.index(query).then((response) => {
-                    this.upcomingLeagueList = response.data.upcomingLeagueList;
-                    this.finishedLeagueList = response.data.finishedLeagueList;
+                new LeagueService().index(query).then((response) => {
+                    this.upcomingLeagueList = response.upcomingLeagueList;
+                    this.finishedLeagueList = response.finishedLeagueList;
                 });
             },
 
@@ -69,9 +69,9 @@
 
             updateData(query) {
                 this.searchText = 'Search in here...';
-                // this.getLeagueListPageData(query);
-                this.getUpcomingLeagueListData();
-                this.getFinishedLeagueListData();
+                this.getLeagueListPageData(query);
+                // this.getUpcomingLeagueListData();
+                // this.getFinishedLeagueListData();
             }
         },
 

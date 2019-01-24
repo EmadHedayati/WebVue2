@@ -16,7 +16,7 @@
                     <div class="col-auto align-self-start text-center">
                         <div class="row mb-3">
                             <div class="col">
-                                <img class="circle image float-left" :src="getImageUrl(match.homeTeam.image)"/>
+                                <img class="circle image float-left" :src="match.homeTeam.image"/>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -44,7 +44,7 @@
                     <div class="col-auto">
                         <div class="row mb-3">
                             <div class="col">
-                                <img class="circle image float-left" :src="getImageUrl(match.awayTeam.image)"/>
+                                <img class="circle image float-left" :src="match.awayTeam.image"/>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -70,10 +70,6 @@
         },
 
         methods: {
-            getImageUrl(url) {
-                return require("../../assets/" + url);
-            },
-
             getFormattedTime(date) {
                 var days = [
                     "Sunday",

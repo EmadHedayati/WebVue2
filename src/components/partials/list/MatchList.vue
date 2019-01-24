@@ -18,13 +18,13 @@
             <div class="col line"/>
         </div>
         <div class="row py-4">
-            <MatchListItem v-for="item in latestMatchList"
+            <MatchListItem v-for="(item, index) in latestMatchList"
                            :match="item"
-                           :key="item.id"
+                           :key="index * 2"
                            v-show="selected == 'Latest'"/>
-            <MatchListItem v-for="item in favouritesMatchList"
+            <MatchListItem v-for="(item, index) in favouritesMatchList"
                            :match="item"
-                           :key="item.id"
+                           :key="index * 2 + 1"
                            v-show="selected == 'Favourites'"/>
         </div>
     </div>

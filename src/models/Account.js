@@ -19,6 +19,10 @@ class Account extends Model {
                 type: String,
                 default: ''
             },
+            backgroundImage: {
+                type: String,
+                default: ''
+            },
             dateCreated: {
                 type: Number,
                 default: ''

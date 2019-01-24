@@ -3,7 +3,7 @@
         <div class="row p-3 align-items-md-center">
             <div class="col">
                 <router-link :to="{ name: 'team', params: { teamId: match.homeTeam.id }}" tag="div" class="cp">
-                    <img class="circle image float-left mr-2" :src="getImageUrl(match.homeTeam.image)"/>
+                    <img class="circle image float-left mr-2" :src="match.homeTeam.image"/>
                     <span class="h6 text-dark font-weight-bold float-left">{{match.homeTeam.shortTitle}}</span>
                 </router-link>
             </div>
@@ -24,7 +24,7 @@
             </router-link>
             <div class="col">
                 <router-link :to="{ name: 'team', params: { teamId: match.awayTeam.id }}" tag="div" class="cp">
-                    <img class="circle image float-right ml-2" :src="getImageUrl(match.awayTeam.image)"/>
+                    <img class="circle image float-right ml-2" :src="match.awayTeam.image"/>
                     <span class="h6 text-dark font-weight-bold float-right">{{match.awayTeam.shortTitle}}</span>
                 </router-link>
             </div>
@@ -43,10 +43,6 @@
         },
 
         methods: {
-            getImageUrl(url) {
-                return require("../../../assets/" + url);
-            },
-
             getFormattedTime(date) {
                 var days = [
                     "Sunday",

@@ -21,7 +21,7 @@
                     <router-link :to="getRouterUrl(row[0])" tag="div" class="cp">
                         <div class="row">
                             <div class="col-auto py-0 px-2">
-                                <img class="circle image ml-2" :src="getImageUrl(row[0].image)"/>
+                                <img class="circle image ml-2" :src="row[0].image"/>
                             </div>
                             <div class="col py-0 pl-2 pr-4 align-items-start">
                                 <span class="h6 text-dark font-weight-bold">{{row[0].title}}</span>
@@ -53,10 +53,6 @@
         },
 
         methods: {
-            getImageUrl(url) {
-                return require('../../assets/' + url);
-            },
-
             getRouterUrl(account) {
                 if (account instanceof Team)
                     return {name: 'team', params: {teamId: account.id}};

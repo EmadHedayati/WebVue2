@@ -13,7 +13,7 @@
             </div>
             <router-link :to="{ name: 'news', params: { newsId: news.id }}" tag="div" class="cp">
                 <div class="col-auto p-0">
-                    <img class="round image" :src="getImageUrl(news.image)"/>
+                    <img class="round image" :src="news.image"/>
                 </div>
             </router-link>
         </div>
@@ -43,10 +43,6 @@
         },
 
         methods: {
-            getImageUrl(url) {
-                return require('../../../assets/' + url);
-            },
-
             getFormattedTime(date) {
                 var tmp = new Date();
                 tmp.setTime(date);

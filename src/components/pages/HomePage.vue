@@ -54,6 +54,7 @@
     import Dummy from "../../utils/Dummy";
     import Lottie from "../partials/Lottie";
     import HomeService from "../../webservices/HomeService";
+    import axios from 'axios'
 
     export default {
         name: 'HomePage',
@@ -79,13 +80,14 @@
 
         methods: {
             getHomePageData: function () {
-                HomeService.index().then((response) => {
-                    this.sliderNewsList = response.data.sliderNewsList;
-                    this.latestNewsList = response.data.latestNewsList;
-                    this.favouriteNewsList = response.data.favouriteNewsList;
-                    this.footballMatchList = response.data.footballMatchList;
-                    this.basketballMatchList = response.data.basketballMatchList;
+                new HomeService().index().then((response) => {
+                    this.sliderNewsList = response.sliderNewsList;
+                    this.latestNewsList = response.latestNewsList;
+                    this.favouriteNewsList = response.favouriteNewsList;
+                    this.footballMatchList = response.footballMatchList;
+                    this.basketballMatchList = response.basketballMatchList;
                 });
+                axios.get("/api/test").then((response) => console.log(response.data))
             },
 
             getSliderNewsList: function () {
@@ -131,12 +133,12 @@
             },
 
             updateData() {
-                // this.getHomePageData();
-                this.getSliderNewsList();
-                this.getLatestNewsListData();
-                this.getFavouriteNewsListData();
-                this.getFootballMatchListData();
-                this.getBasketballMatchListData();
+                this.getHomePageData();
+                // this.getSliderNewsList();
+                // this.getLatestNewsListData();
+                // this.getFavouriteNewsListData();
+                // this.getFootballMatchListData();
+                // this.getBasketballMatchListData();
             },
         },
 
