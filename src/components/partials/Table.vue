@@ -9,7 +9,7 @@
                     v-for="(item, index) in table.colList.slice(1, table.colList.length)"
                     :key="index"
                     v-text="item"
-                    @click="sortBy(index + 1)"></th>
+                    @click="sortBy(index)"></th>
             </tr>
             </thead>
             <tbody>
@@ -104,6 +104,7 @@
     .image {
         width: 20px;
         height: 20px;
+        object-fit: cover;
     }
 
     .table-header-padding {

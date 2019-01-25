@@ -68,11 +68,12 @@
             },
 
             searchInData() {
+                this.upcomingLeagueList = []
+                this.finishedLeagueList = []
                 this.updateData({q: this.searchText});
             },
 
             updateData(query) {
-                this.searchText = 'Search in here...';
                 this.getLeagueListPageData(query);
                 // this.getUpcomingLeagueListData();
                 // this.getFinishedLeagueListData();

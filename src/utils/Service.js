@@ -48,7 +48,7 @@ export default class Service {
 
         let queryString = this.createQueryString(query)
         let BASE_URL = '/api/'
-        return BASE_URL + segments.join('/') + (queryString.length ? ('?' + queryString(query)) : '')
+        return BASE_URL + segments.join('/') + (queryString.length ? ('?' + queryString) : '')
     }
 
     createQueryString(query) {

@@ -124,10 +124,12 @@
 <style scoped>
     .news-image {
         width: 100%;
+        object-fit: cover;
     }
 
     .author-image {
         width: 80px;
         height: 80px;
+        object-fit: cover;
     }
 </style>

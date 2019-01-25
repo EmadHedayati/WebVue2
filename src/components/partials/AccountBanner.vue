@@ -82,6 +82,7 @@
         border: 2px solid white;
         width: 130px;
         height: 130px;
+        object-fit: cover;
     }
 
     .three-dot {
