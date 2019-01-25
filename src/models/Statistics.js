@@ -9,11 +9,11 @@ class Statistics extends Model {
             },
             homeValue: {
                 type: Number,
-                default: ''
+                default: 0
             },
             awayValue: {
                 type: Number,
-                default: ''
+                default: 0
             },
         }
     }

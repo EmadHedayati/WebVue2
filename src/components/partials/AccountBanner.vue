@@ -1,21 +1,21 @@
 <template>
     <div class="row align-items-md-end round background">
-        <img class="round image" :src="account.backgroundImage">
+        <img class="round image" :src="banner.backgroundImage">
         <div class="image-gradient">
         </div>
         <div class="row bottom">
             <div class="col-auto my-4 ml-4 align-self-end">
-                <img class="circle account-image" :src="account.image"/>
+                <img class="circle account-image" :src="banner.image"/>
             </div>
             <div class="col-md-8 my-4 align-self-center">
                 <div class="row mb-2">
                     <div class="col">
-                        <h2 class="h2 title text-white"><strong>{{account.title}}</strong></h2>
+                        <h2 class="h2 title text-white"><strong>{{banner.title}}</strong></h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <span class="h6 text-white three-dot">{{account.description}}</span>
+                        <span class="h6 text-white three-dot">{{banner.description}}</span>
                     </div>
                 </div>
             </div>
@@ -24,17 +24,18 @@
 </template>
 
 <script>
-    import Account from "../../models/Account";
+
+    import Banner from "../../models/Banner";
 
     export default {
         name: 'AccountBanner',
 
         props: {
-            account: Object
+            banner: new Banner({})
         },
 
         methods: {
-        }
+        },
     }
 </script>
 

@@ -1,21 +1,24 @@
 import Account from "./Account";
 import Match from "./Match";
-import Table from "./Table";
+import Table from "./TableData";
 
 class League extends Account {
     getAttributes(){
         return {
             matchList: {
-                type: Array,
-                default: ''
+                type: Match,
+                isArray: true,
+                default: []
             },
             nextMatch: {
                 type: Match,
-                default: ''
+                isModel: true,
+                default: new Match({})
             },
             leagueTeamTable: {
                 type: Table,
-                default: ''
+                isModel: true,
+                default: new Table({})
             },
         }
     }

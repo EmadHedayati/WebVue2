@@ -55,6 +55,8 @@
     import Lottie from "../partials/Lottie";
     import HomeService from "../../webservices/HomeService";
     import axios from 'axios'
+    import News from "../../models/News";
+    import Match from "../../models/Match";
 
     export default {
         name: 'HomePage',
@@ -70,22 +72,41 @@
             return {
                 // defaultOptions: {animationData: require('../../assets/dogrun.zip')},
                 animationSpeed: 1,
-                sliderNewsList: Array,
-                latestNewsList: Array,
-                favouriteNewsList: Array,
-                footballMatchList: Object,
-                basketballMatchList: Object,
+                sliderNewsList: [],
+                latestNewsList: [],
+                favouriteNewsList: [],
+                footballMatchList: {
+                    latest: [],
+                    favourites: [],
+                },
+                basketballMatchList: {
+                    latest: [],
+                    favourites: [],
+                },
             }
         },
 
         methods: {
             getHomePageData: function () {
                 new HomeService().index().then((response) => {
-                    this.sliderNewsList = response.sliderNewsList;
-                    this.latestNewsList = response.latestNewsList;
-                    this.favouriteNewsList = response.favouriteNewsList;
-                    this.footballMatchList = response.footballMatchList;
-                    this.basketballMatchList = response.basketballMatchList;
+                    for (let item in response.sliderNewsList)
+                        this.sliderNewsList.push(new News(response.sliderNewsList[item]))
+
+                    for (let item in response.latestNewsList)
+                        this.latestNewsList.push(new News(response.latestNewsList[item]))
+
+                    for (let item in response.favouriteNewsList)
+                        this.favouriteNewsList.push(new News(response.favouriteNewsList[item]))
+
+                    for (let item in response.footballMatchList.latest)
+                        this.footballMatchList.latest.push(new Match(response.footballMatchList.latest[item]))
+                    for (let item in response.footballMatchList.favourites)
+                        this.footballMatchList.favourites.push(new Match(response.footballMatchList.favourites[item]))
+
+                    for (let item in response.basketballMatchList.latest)
+                        this.basketballMatchList.latest.push(new Match(response.basketballMatchList.latest[item]))
+                    for (let item in response.basketballMatchList.favourites)
+                        this.basketballMatchList.favourites.push(new Match(response.basketballMatchList.favourites[item]))
                 });
                 axios.get("/api/test").then((response) => console.log(response.data))
             },

@@ -60,16 +60,18 @@
         data() {
             return {
                 imageHeight: 0,
-                news: Object,
-                relatedNewsList: Array,
+                news: new News({}),
+                relatedNewsList: [],
             }
         },
 
         methods: {
             getNewsPageData: function () {
                 new NewsService().get(this.$route.params.newsId).then((response) => {
-                    this.news = response.news;
-                    this.relatedNewsList = response.relatedNewsList;
+                    this.news = new News(response.news);
+                    console.log(this.news)
+                    for (let item in response.relatedNewsList)
+                        this.relatedNewsList.push(new News(response.relatedNewsList[item]))
                 });
             },
 

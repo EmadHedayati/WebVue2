@@ -21,7 +21,6 @@
 
 <script>
     import Dummy from "../../utils/Dummy";
-    import Table from "../partials/Table";
     import AccountBanner from "../partials/AccountBanner";
     import MatchList from "../partials/list/MatchList";
     import MatchDetail from "../partials/MatchDetail";
@@ -30,6 +29,7 @@
     import MatchTimeLine from "../partials/MatchTimeLine";
     import NewsList from "../partials/list/NewsList";
     import MatchService from "../../webservices/MatchService";
+    import News from "../../models/News";
 
     export default {
         name: 'MatchPage',
@@ -41,21 +41,23 @@
             MatchDetail,
             MatchList,
             AccountBanner,
-            Table,
         },
 
         data() {
             return {
-                match: Object,
-                latestNewsList: Array,
+                match: new Match({}),
+                latestNewsList: [],
             }
         },
 
         methods: {
             getMatchPageData: function () {
                 new MatchService().get(this.$route.params.matchId).then((response) => {
-                    this.match = response.match;
-                    this.latestNewsList = response.latestNewsList;
+                    this.match = new Match(response.match);
+
+                    console.log(this.match)
+                    for (let item in response.latestNewsList)
+                        this.latestNewsList.push(new News(response.latestNewsList[item]))
                 });
             },
 

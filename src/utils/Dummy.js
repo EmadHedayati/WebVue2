@@ -3,7 +3,7 @@ import News from "../models/News";
 import Player from "../models/Player";
 import Stadium from "../models/Stadium";
 import Team from "../models/Team";
-import Table from "../models/Table";
+import Table from "../models/TableData";
 import League from "../models/League";
 import LeagueTeam from "../models/LeagueTeam";
 import Account from "../models/Account";

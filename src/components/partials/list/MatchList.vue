@@ -39,10 +39,10 @@
         components: {MatchListItem},
 
         props: {
-            singleType: Boolean,
-            latestMatchList: Array,
-            favouritesMatchList: Array,
-            title: String,
+            singleType: true,
+            latestMatchList: [],
+            favouritesMatchList: [],
+            title: "",
         },
 
         data() {

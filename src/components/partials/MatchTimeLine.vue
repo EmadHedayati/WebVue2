@@ -89,7 +89,7 @@
         name: 'MatchTimeLine',
 
         props: {
-            match: Object,
+            match: new Match({}),
         },
 
         methods: {

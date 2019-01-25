@@ -25,7 +25,7 @@
         name: "MatchStatisticsListItem",
 
         props: {
-            statistics: Object
+            statistics: new Statistics({})
         },
 
         methods: {

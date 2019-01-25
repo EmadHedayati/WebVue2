@@ -30,22 +30,20 @@ class Model {
         if (this.getAttributes().hasOwnProperty(name)) {
             let attribute = this.getAttributes()[name]
             if (value !== null && value !== undefined) {
-                if (value.constructor !== attribute.type) {
-                    throw new Error('Type mismatch exception for attribute ' + name + ', expected ' + attribute.type + ', got ' + value.constructor)
-                }
-                if (attribute.type instanceof Model) {
+                // if (value.constructor !== attribute.type) {
+                //     throw new Error('Type mismatch exception for attribute ' + name + ', expected ' + attribute.type + ', got ' + value.constructor)
+                // }
+                if (attribute.isModel) {
                     value = new attribute.type(value)
+                } else if (attribute.isArray) {
+                    let tmpList = []
+                    for (let item in value) {
+                        tmpList.push(new attribute.type(value[item]))
+                    }
+                    value = tmpList
                 }
-            } else if (attribute.required) {
-                throw new Error(`The ${name} attribute must be presents`)
             } else {
-                if (attribute.type === Array) {
-                    value = []
-                } else if (attribute.type === Object) {
-                    value = {}
-                } else {
-                    value = attribute.default
-                }
+                value = attribute.default
             }
         }
         this[name] = value

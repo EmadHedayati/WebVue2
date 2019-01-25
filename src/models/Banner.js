@@ -1,12 +1,8 @@
 import Model from "./Model";
 
-class Account extends Model {
+class Banner extends Model {
     getAttributes() {
         return {
-            id: {
-                type: Number,
-                default: 0
-            },
             title: {
                 type: String,
                 default: ''
@@ -23,9 +19,9 @@ class Account extends Model {
                 type: String,
                 default: ''
             },
-            dateCreated: {
-                type: Number,
-                default: 0
+            type: {
+                type: String,
+                default: ''
             },
         }
     }
@@ -35,4 +31,4 @@ class Account extends Model {
     }
 }
 
-export default Account;
+export default Banner;

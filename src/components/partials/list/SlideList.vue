@@ -23,7 +23,7 @@
         components: {SliderItem},
 
         props: {
-            newsList: Array,
+            newsList: [],
         },
 
         data() {
@@ -46,11 +46,6 @@
             showItem: function (index) {
                 this.currentItem = index;
             }
-        },
-
-        created: function () {
-            console.log("her her inside")
-            console.log(this.newsList)
         },
     }
 </script>

@@ -26,8 +26,8 @@
         components: {NewsItem},
 
         props: {
-            newsList: Array,
-            title: String,
+            newsList: [],
+            title: "",
         },
     }
 </script>

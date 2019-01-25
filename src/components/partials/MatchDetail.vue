@@ -66,7 +66,7 @@
         name: "MatchDetail",
 
         props: {
-            match: Object
+            match: new Match({})
         },
 
         methods: {

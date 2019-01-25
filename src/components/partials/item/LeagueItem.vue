@@ -35,7 +35,7 @@
         name: 'LeagueListItem',
 
         props: {
-            league: Object,
+            league: new League({}),
         },
 
         methods: {

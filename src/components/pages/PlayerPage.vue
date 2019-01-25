@@ -3,7 +3,7 @@
         <div class="col-md-10 offset-1">
             <div class="row mx-0 mb-5">
                 <div class="col">
-                    <AccountBanner :account="player"/>
+                    <AccountBanner :banner="getBannerFromAccount(player)"/>
                 </div>
             </div>
             <div class="row mb-5">
@@ -26,39 +26,46 @@
 <script>
     import NewsList from "../partials/list/NewsList";
     import Dummy from "../../utils/Dummy";
-    import Table from "../partials/Table";
     import AccountBanner from "../partials/AccountBanner";
     import PlayerService from "../../webservices/PlayerService";
+    import Player from "../../models/Player";
+    import News from "../../models/News";
+    import Table from "../partials/Table";
+    import TableData from "../../models/TableData";
+    import Banner from "../../models/Banner";
 
     export default {
         name: 'PlayerPage',
 
         components: {
-            AccountBanner,
             Table,
+            AccountBanner,
             NewsList,
         },
 
         props: {
-            table: Table,
+            table: TableData,
         },
 
         data() {
             return {
-                player: Object,
-                latestNewsList: Array,
-                statisticsTable: Object,
-                detailsTable: Object,
+                player: new Player({}),
+                latestNewsList: [],
+                statisticsTable: new TableData({}),
+                detailsTable: new TableData({}),
             }
         },
 
         methods: {
             getPlayerPageData: function () {
                 new PlayerService().get(this.$route.params.playerId).then((response) => {
-                    this.player = response.player;
-                    this.latestNewsList = response.latestNewsList;
-                    this.statisticsTable = response.statisticsTable;
-                    this.detailsTable = response.detailsTable;
+                    this.player = new Player(response.player);
+
+                    for (let item in response.latestNewsList)
+                        this.latestNewsList.push(new News(response.latestNewsList[item]))
+
+                    this.statisticsTable = new TableData(response.statisticsTable);
+                    this.detailsTable = new TableData(response.detailsTable);
                 });
             },
 
@@ -76,6 +83,16 @@
 
             getDetailsData: function () {
                 this.detailsTable = Dummy.table(10, 5, 'team');
+            },
+
+            getBannerFromAccount(account) {
+                let banner = new Banner({
+                    "title": account.title,
+                    "description": account.description,
+                    "image": account.image,
+                    "backgroundImage": account.backgroundImage,
+                });
+                return banner;
             },
 
             updateData() {

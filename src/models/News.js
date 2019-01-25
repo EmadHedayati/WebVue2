@@ -1,12 +1,15 @@
 import Model from "./Model";
-import Account from "./Account";
+import Tag from "./Tag";
+import User from "./User";
+import Comment from "./Comment";
+import Match from "./Match";
 
 class News extends Model {
     getAttributes(){
         return {
             id: {
                 type: Number,
-                default: ''
+                default: 0
             },
             title: {
                 type: String,
@@ -25,20 +28,23 @@ class News extends Model {
                 default: ''
             },
             tagList: {
-                type: Array,
-                default: ''
+                type: Tag,
+                isArray: true,
+                default: []
             },
             author: {
-                type: Account,
-                default: ''
+                type: User,
+                isModel: true,
+                default: new User({})
             },
             commentList: {
-                type: Array,
-                default: ''
+                type: Comment,
+                isArray: true,
+                default: []
             },
             dateCreated: {
                 type: String,
-                default: new Date().getTime()
+                default: 0
             },
         }
     }

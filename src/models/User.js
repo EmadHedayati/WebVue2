@@ -1,25 +1,23 @@
 import Model from "./Model";
-import User from "./User";
 
-class Comment extends Model {
-    getAttributes(){
+class User extends Model {
+    getAttributes() {
         return {
             id: {
                 type: Number,
                 default: 0
             },
-            body: {
+            username: {
                 type: String,
                 default: ''
             },
-            author: {
-                type: User,
-                isModel: true,
-                default: new User({})
-            },
-            dateCreated: {
+            email: {
                 type: String,
-                default: 0
+                default: ''
+            },
+            image: {
+                type: String,
+                default: ''
             },
         }
     }
@@ -29,4 +27,4 @@ class Comment extends Model {
     }
 }
 
-export default Comment;
+export default User;

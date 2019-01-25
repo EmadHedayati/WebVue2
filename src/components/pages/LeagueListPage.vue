@@ -31,6 +31,7 @@
     import Dummy from "../../utils/Dummy";
     import LeagueList from "../partials/list/LeagueList";
     import LeagueService from "../../webservices/LeagueService";
+    import League from "../../models/League";
 
     export default {
         name: 'LeagueListPage',
@@ -42,16 +43,19 @@
         data() {
             return {
                 searchText: 'Search in here...',
-                upcomingLeagueList: Array,
-                finishedLeagueList: Array,
+                upcomingLeagueList: [],
+                finishedLeagueList: [],
             }
         },
 
         methods: {
             getLeagueListPageData: function (query) {
                 new LeagueService().index(query).then((response) => {
-                    this.upcomingLeagueList = response.upcomingLeagueList;
-                    this.finishedLeagueList = response.finishedLeagueList;
+                    for (let item in response.upcomingLeagueList)
+                        this.upcomingLeagueList.push(new League(response.upcomingLeagueList[item]))
+
+                    for (let item in response.finishedLeagueList)
+                        this.finishedLeagueList.push(new League(response.finishedLeagueList[item]))
                 });
             },
 

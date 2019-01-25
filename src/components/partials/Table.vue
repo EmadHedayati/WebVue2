@@ -13,27 +13,27 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(row, rowIndex) in table.rowList"
-                :key="rowIndex">
-                <th scope="row"
+            <tr v-for="(tableRow, tableRowIndex) in table.tableRowList"
+                :key="tableRowIndex">
+                <th scope="tableRow"
                     class="text-dark font-weight-normal pl-4 no-border"
-                    :class="[rowIndex === 0 ? 'pt-4' : '', rowIndex === table.rowList.length - 1 ? 'pb-4' : '']">
-                    <router-link :to="getRouterUrl(table.rowList[rowIndex][0])" tag="div" class="cp">
+                    :class="[tableRowIndex === 0 ? 'pt-4' : '', tableRowIndex === table.tableRowList.length - 1 ? 'pb-4' : '']">
+                    <router-link :to="getRouterUrl(tableRow.banner)" tag="div" class="cp">
                         <div class="row">
                             <div class="col-auto py-0 px-2">
-                                <img class="circle image ml-2" :src="table.rowList[rowIndex][0].image"/>
+                                <img class="circle image ml-2" :src="tableRow.banner.image"/>
                             </div>
                             <div class="col py-0 pl-2 pr-4 align-items-start">
-                                <span class="h6 text-dark font-weight-bold">{{table.rowList[rowIndex][0].title}}</span>
+                                <span class="h6 text-dark font-weight-bold">{{tableRow.banner.title}}</span>
                             </div>
                         </div>
                     </router-link>
                 </th>
                 <td class="text-dark font-weight-normal text-center left-border"
-                    :class="[rowIndex === 0 ? 'pt-4' : '', rowIndex === table.rowList.length - 1 ? 'pb-4' : '']"
-                    v-for="(cell, cellIndex) in row.slice(1, row.length)"
-                    :key="cellIndex"
-                    v-text="cell"></td>
+                    :class="[tableRowIndex === 0 ? 'pt-4' : '', tableRowIndex === table.tableRowList.length - 1 ? 'pb-4' : '']"
+                    v-for="(data, dataIndex) in tableRow.rowData"
+                    :key="dataIndex"
+                    v-text="data"></td>
             </tr>
             </tbody>
         </table>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import Table from "../../models/Table";
+    import TableData from "../../models/TableData";
     import Team from "../../models/Team";
     import Player from "../../models/Player";
 
@@ -49,35 +49,21 @@
         name: 'Table',
 
         props: {
-            table: Object,
+            table: new TableData({}),
         },
 
         methods: {
-            getRouterUrl(account) {
-                if (account instanceof Team)
-                    return {name: 'team', params: {teamId: account.id}};
-                if (account instanceof Player)
-                    return {name: 'player', params: {playerId: account.id}};
-            },
-
-            alert() {
-                console.log(this.table.toString())
+            getRouterUrl(banner) {
+                if (banner.type == 'Team')
+                    return {name: 'team', params: {teamId: banner.id}};
+                if (banner.type == 'Player')
+                    return {name: 'player', params: {playerId: banner.id}};
             },
 
             sortBy(columnIndex) {
                 this.table.sortBy(columnIndex);
             }
-        },
-
-        created: function() {
-            this.alert();
-        },
-
-        watch: {
-            '$route' () {
-                this.alert();
-            }
-        },
+        }
     }
 </script>
 

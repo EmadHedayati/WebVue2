@@ -1,5 +1,6 @@
 import Model from "./Model";
 import Team from "./Team";
+import Statistics from "./Statistics";
 
 class MatchStatistics extends Model {
     getAttributes() {
@@ -9,8 +10,9 @@ class MatchStatistics extends Model {
                 default: ''
             },
             statisticsList: {
-                type: Array,
-                default: ''
+                type: Statistics,
+                isArray: true,
+                default: []
             },
         }
     }

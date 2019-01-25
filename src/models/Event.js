@@ -9,7 +9,7 @@ class Event extends Model {
             },
             time: {
                 type: Number,
-                default: ''
+                default: 45
             },
             image: {
                 type: String,
@@ -17,7 +17,7 @@ class Event extends Model {
             },
             important: {
                 type: Boolean,
-                default: ''
+                default: false
             },
         }
     }

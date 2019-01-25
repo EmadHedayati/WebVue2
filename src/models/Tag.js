@@ -5,7 +5,7 @@ class Tag extends Model {
         return {
             id: {
                 type: Number,
-                default: ''
+                default: 0
             },
             title: {
                 type: String,

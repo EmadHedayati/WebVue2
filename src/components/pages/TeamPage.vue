@@ -3,7 +3,7 @@
         <div class="col-md-10 offset-1">
             <div class="row mx-0 mb-5">
                 <div class="col">
-                    <AccountBanner :account="team"/>
+                    <AccountBanner :banner="getBannerFromAccount(team)"/>
                 </div>
             </div>
             <div class="row mb-5">
@@ -28,10 +28,13 @@
 <script>
     import NewsList from "../partials/list/NewsList";
     import Dummy from "../../utils/Dummy";
-    import Table from "../partials/Table";
     import AccountBanner from "../partials/AccountBanner";
     import TeamService from "../../webservices/TeamService";
-    import axios from 'axios'
+    import Team from "../../models/Team";
+    import News from "../../models/News";
+    import Table from "../partials/Table";
+    import TableData from "../../models/TableData";
+    import Banner from "../../models/Banner";
 
     export default {
         name: 'TeamPage',
@@ -44,21 +47,23 @@
 
         data() {
             return {
-                team: Object,
-                latestNewsList: Array,
-                matchesTable: Object,
-                playersTable: Object,
+                team: new Team({}),
+                latestNewsList: [],
+                matchesTable: new TableData({}),
+                playersTable: new TableData({}),
             }
         },
 
         methods: {
             getTeamPageData: function () {
                 new TeamService().get(this.$route.params.teamId).then((response) => {
-                    this.team = response.team;
-                    this.latestNewsList = response.latestNewsList;
-                    this.matchesTable = response.matchesTable;
-                    // console.log(this.matchesTable.rowList[0][0].title)
-                    this.playersTable = response.playersTable;
+                    this.team = new Team(response.team);
+
+                    for (let item in response.latestNewsList)
+                        this.latestNewsList.push(new News(response.latestNewsList[item]))
+
+                    this.matchesTable = new TableData(response.matchesTable);
+                    this.playersTable = new TableData(response.playersTable);
                 });
             },
 
@@ -76,6 +81,16 @@
 
             getPlayersTableData: function () {
                 this.playersTable = Dummy.table(7, 5, 'player');
+            },
+
+            getBannerFromAccount(account) {
+                let banner = new Banner({
+                    "title": account.title,
+                    "description": account.description,
+                    "image": account.image,
+                    "backgroundImage": account.backgroundImage,
+                });
+                return banner;
             },
 
             updateData() {
