@@ -2,6 +2,10 @@ export default {
     home: {
         index: 'home',
     },
+    register: {
+        login: 'login',
+        signup: 'signup',
+    },
     teams: {
         get: 'teams/:teamId',
     },

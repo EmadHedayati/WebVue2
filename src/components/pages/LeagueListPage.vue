@@ -10,7 +10,7 @@
                             </div>
                         </div>
                         <div class="col align-self-center p-0">
-                            <input class="w-100 search" v-model="searchText" @keyup.enter="searchInData()"/>
+                            <input class="w-100 search" placeholder="Search in here..." v-model="searchText" @keyup.enter="searchInData()"/>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
 
         data() {
             return {
-                searchText: 'Search in here...',
+                searchText: '',
                 upcomingLeagueList: [],
                 finishedLeagueList: [],
             }

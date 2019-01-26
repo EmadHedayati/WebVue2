@@ -5,6 +5,10 @@ export default class Service {
     request(method, route, ...args) {
         let request = null
         let url = this.createFinalUrl(route)
+        if (localStorage.login) {
+            axios.defaults.headers.common['username'] = localStorage.username;
+            axios.defaults.headers.common['password'] = localStorage.password;
+        }
         switch (method) {
             case 'get':
                 request = axios.get(url, ...args)

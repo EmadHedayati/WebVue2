@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="row mb-5">
-      <HeaderMenu/>
+      <HeaderMenu ref="headerMenu"/>
     </div>
     <transition
       name="fade"
@@ -21,7 +21,11 @@
       HeaderMenu,
     },
 
-    methods: {}
+    methods: {
+        onLogin: function () {
+            this.$refs.headerMenu.onLogin();
+        }
+    }
   }
 </script>
 

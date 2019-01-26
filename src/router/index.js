@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HomePage from '../components/pages/HomePage'
+import LoginPage from '../components/pages/LoginPage'
 import TeamPage from '../components/pages/TeamPage'
 import PlayerPage from '../components/pages/PlayerPage'
 import LeagueListPage from '../components/pages/LeagueListPage'
@@ -14,6 +15,10 @@ const routes = [
   {
     path: '/',
     component: HomePage,
+  },
+  {
+    path: '/login',
+    component: LoginPage,
   },
   {
     path: '/teams/:teamId',
