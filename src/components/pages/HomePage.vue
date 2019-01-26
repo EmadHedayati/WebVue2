@@ -21,7 +21,7 @@
                         <NewsList :newsList="latestNewsList" title="LATEST NEWS"/>
                     </div>
                 </div>
-                <div class="row">
+                <div v-if="isLogin" class="row">
                     <div class="col">
                         <NewsList :newsList="favouriteNewsList" title="FAVOURITE NEWS"/>
                     </div>
@@ -72,6 +72,7 @@
             return {
                 // defaultOptions: {animationData: require('../../assets/dogrun.zip')},
                 animationSpeed: 1,
+                isLogin: false,
                 sliderNewsList: [],
                 latestNewsList: [],
                 favouriteNewsList: [],
@@ -83,6 +84,12 @@
                     latest: [],
                     favourites: [],
                 },
+            }
+        },
+
+        mounted() {
+            if (localStorage.login) {
+                this.isLogin = localStorage.login == 'true' ? true : false;
             }
         },
 

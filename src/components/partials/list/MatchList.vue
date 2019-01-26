@@ -8,8 +8,8 @@
                 <span class="h6 cp" :class="[selected == 'Latest' ? 'text-info' : 'text-muted']"
                       @click="selectTab('Latest')"
                       v-text="'Latest'"></span>
-                <span class="h6 font-weight-bold text-muted"> / </span>
-                <span class="h6 cp" :class="[selected == 'Favourites' ? 'text-info' : 'text-muted']"
+                <span v-show="isLogin" class="h6 font-weight-bold text-muted"> / </span>
+                <span v-show="isLogin" class="h6 cp" :class="[selected == 'Favourites' ? 'text-info' : 'text-muted']"
                       @click="selectTab('Favourites')"
                       v-text="'Favourites'"></span>
             </div>
@@ -47,7 +47,14 @@
 
         data() {
             return {
+                isLogin: false,
                 selected: 'Latest'
+            }
+        },
+
+        mounted() {
+            if (localStorage.login) {
+                this.isLogin = localStorage.login == 'true' ? true : false;
             }
         },
 

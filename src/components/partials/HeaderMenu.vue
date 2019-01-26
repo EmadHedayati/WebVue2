@@ -10,15 +10,15 @@
                         </div>
                     </router-link>
                     <div class="col-md p-0">
-                        <router-link v-if="!isLogin" to="/login" tag="div" class="cp">
+                        <router-link v-show="!isLogin" to="/login" tag="div" class="cp">
                             <img class="my-3 ml-3 icon-size float-right"
                                  src="../../assets/icons/baseline-person-24px.svg">
                         </router-link>
-                        <span v-if="isLogin" class="h6 my-3 ml-3 float-right font-weight-bold">{{username}}</span>
+                        <span v-show="isLogin" class="h6 my-3 ml-3 float-right font-weight-bold">{{username}}</span>
                         <router-link to="/league-list" tag="div" class="cp">
                             <img class="m-3 icon-size float-right" src="../../assets/icons/baseline-search-24px.svg">
                         </router-link>
-                        <img v-if="isLogin" class="m-3 icon-size float-right cp" src="../../assets/icons/baseline-exit_to_app-24px.svg" @click="logout()">
+                        <img v-show="isLogin" class="m-3 icon-size float-right cp" src="../../assets/icons/baseline-exit_to_app-24px.svg" @click="logout()">
                         <router-link to="/" tag="div" class="cp">
                             <img class="m-3 icon-size float-right" src="../../assets/icons/baseline-home-24px.svg">
                         </router-link>
@@ -42,7 +42,7 @@
 
         mounted() {
             if (localStorage.login) {
-                this.isLogin = localStorage.login;
+                this.isLogin = localStorage.login == 'true' ? true : false;
                 this.username = localStorage.username;
             }
         },
