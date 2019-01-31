@@ -26,8 +26,14 @@
         components: {LeagueListItem},
 
         props: {
-            leagueList: [],
-            title: "",
+            leagueList: {
+                type: Array,
+                default: () => [],
+            },
+            title: {
+                type: String,
+                default: '',
+            },
         },
     }
 </script>

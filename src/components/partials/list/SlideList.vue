@@ -23,7 +23,10 @@
         components: {SliderItem},
 
         props: {
-            newsList: [],
+            newsList: {
+                type: Array,
+                default: () => [],
+            },
         },
 
         data() {

@@ -20,6 +20,13 @@
                 </div>
             </div>
         </div>
+        <div class="row bottom justify-content-end">
+            <div class="col-auto my-4 ml-4 align-self-end">
+                <div class="btn btn-primary">
+                    nbnbv
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -31,7 +38,10 @@
         name: 'AccountBanner',
 
         props: {
-            banner: new Banner({})
+            banner: {
+                type: Banner,
+                default: new Banner({}),
+            }
         },
 
         methods: {

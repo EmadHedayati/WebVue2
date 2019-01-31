@@ -24,7 +24,10 @@
         name: 'CommentItem',
 
         props: {
-            comment: new Comment({}),
+            comment: {
+                type: Comment,
+                default: new Comment({}),
+            },
         },
 
         methods: {

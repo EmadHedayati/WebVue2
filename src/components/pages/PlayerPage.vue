@@ -43,10 +43,6 @@
             NewsList,
         },
 
-        props: {
-            table: TableData,
-        },
-
         data() {
             return {
                 player: new Player({}),

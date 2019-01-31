@@ -9,11 +9,14 @@
         <!--<div class="col-md-10 offset-1">-->
         <!--<div class="align-content-center align-items-center">-->
         <!--<div class="col">-->
-        <!--<Lottie :options="defaultOptions" :height="400" :width="400" v-on:animCreated="handleAnimation"/>-->
+        <!--<Lottie :options="defaultOptions" :height="400" :width="400"-->
+        <!--v-on:animCreated="handleAnimation"/>-->
         <!--</div>-->
         <!--</div>-->
         <!--</div>-->
         <!--</div>-->
+        <Test2 :loop="true" :haikuStates="getState()">
+        </Test2>
         <div class="row mb-5">
             <div class="col-md-7 offset-1">
                 <div class="row mb-5">
@@ -57,6 +60,8 @@
     import axios from 'axios'
     import News from "../../models/News";
     import Match from "../../models/Match";
+    import Moto from '@haiku/hedayatiemad-moto/vue'
+    import Test2 from '@haiku/hedayatiemad-test2/vue'
 
     export default {
         name: 'HomePage',
@@ -66,11 +71,15 @@
             MatchList,
             NewsList,
             SlideList,
+            Moto,
+            Test2,
         },
 
         data() {
+            let x = require('../../assets/data.json');
+            // x.assets[0].p=require('../../assets/logo.png');
             return {
-                // defaultOptions: {animationData: require('../../assets/dogrun.zip')},
+                defaultOptions: { animationData: x },
                 animationSpeed: 1,
                 isLogin: false,
                 sliderNewsList: [],
@@ -116,6 +125,14 @@
                         this.basketballMatchList.favourites.push(new Match(response.basketballMatchList.favourites[item]))
                 });
                 axios.get("/api/test").then((response) => console.log(response.data))
+            },
+
+            getState: function () {
+                return {
+                    color: {
+                        "value": "#000000"
+                    }
+                };
             },
 
             getSliderNewsList: function () {

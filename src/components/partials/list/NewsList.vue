@@ -26,8 +26,14 @@
         components: {NewsItem},
 
         props: {
-            newsList: [],
-            title: "",
+            newsList: {
+                type: Array,
+                default: () => [],
+            },
+            title: {
+                type: String,
+                default: '',
+            },
         },
     }
 </script>

@@ -94,12 +94,11 @@
 
 <style scoped>
     .search {
-        background: white;
         border: white;
+        background-color: white;
     }
 
     .search:focus {
-        background: white;
-        border: white;
+        outline: none !important;
     }
 </style>

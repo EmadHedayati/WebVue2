@@ -29,7 +29,10 @@
         name: 'News',
 
         props: {
-            news: new News({})
+            news: {
+                type: News,
+                default: new News({}),
+            }
         },
 
         methods: {

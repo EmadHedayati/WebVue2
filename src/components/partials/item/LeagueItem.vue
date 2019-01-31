@@ -35,7 +35,10 @@
         name: 'LeagueListItem',
 
         props: {
-            league: new League({}),
+            league: {
+                type: League,
+                default: new League({}),
+            },
         },
 
         methods: {

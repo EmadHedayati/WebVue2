@@ -10,6 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@haiku/hedayatiemad-moto": "0.0.3",
+    "@haiku/hedayatiemad-test2": "0.0.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.3",
     "faker": "^4.1.0",

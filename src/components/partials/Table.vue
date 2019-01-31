@@ -49,7 +49,10 @@
         name: 'Table',
 
         props: {
-            table: new TableData({}),
+            table: {
+                type: TableData,
+                default: new TableData({}),
+            },
         },
 
         methods: {

@@ -35,8 +35,14 @@
         name: 'NewsListItem',
 
         props: {
-            news: new News({}),
-            showDescription: true
+            news: {
+                type: News,
+                default: new News({}),
+            },
+            showDescription: {
+                type: Boolean,
+                default: true,
+            }
         },
 
         methods: {

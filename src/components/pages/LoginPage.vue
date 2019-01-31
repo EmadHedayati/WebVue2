@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="row justify-content-center text-center">
                                     <div class="col-4 p-2 my-5 button-background cp" @click="postData()">
-                                        <span class="h6 button">Login</span>
+                                        <span class="h6 button" v-text="selectedTab"></span>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@
                 } else {
                     new RegisterService().signup(this.usernameText, this.emailText, this.passwordText).then((response) => {
                         if (response.hasOwnProperty('activationUrl')) {
-                            alert("Please Confirm Your Signup By Clicking On This Link: " + response.activationUrl)
+                            alert("Please Confirm Your Signup By Opening This Link: " + response.activationUrl)
                             this.selectedTab = 'Login'
                         } else {
                             alert(response.error)
@@ -159,6 +159,10 @@
     .input {
         background: #f1f1f1;
         border: #f1f1f1;
+    }
+
+    .input:focus {
+        outline: none !important;
     }
 
     .forgot {

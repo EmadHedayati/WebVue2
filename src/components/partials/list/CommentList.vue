@@ -23,8 +23,14 @@
         components: {CommentItem},
 
         props: {
-            commentList: [],
-            title: "",
+            commentList: {
+                type: Array,
+                default: () => [],
+            },
+            title: {
+                type: String,
+                default: '',
+            },
         },
     }
 </script>
