@@ -3,6 +3,10 @@ import Model from "./Model";
 class Banner extends Model {
     getAttributes() {
         return {
+            id: {
+                type: Number,
+                default: 0
+            },
             title: {
                 type: String,
                 default: ''
@@ -18,6 +22,10 @@ class Banner extends Model {
             backgroundImage: {
                 type: String,
                 default: ''
+            },
+            subscribed: {
+                type: Boolean,
+                default: false
             },
             type: {
                 type: String,

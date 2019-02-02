@@ -83,9 +83,12 @@
 
             getBannerFromAccount(account) {
                 let banner = new Banner({
+                    "id": account.id,
+                    "type": account.type,
                     "title": account.title,
                     "description": account.description,
                     "image": account.image,
+                    "subscribed": account.subscribed,
                     "backgroundImage": account.backgroundImage,
                 });
                 return banner;

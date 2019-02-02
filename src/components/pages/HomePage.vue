@@ -15,8 +15,8 @@
         <!--</div>-->
         <!--</div>-->
         <!--</div>-->
-        <Test2 :loop="true" :haikuStates="getState()">
-        </Test2>
+        <!--<Test2 :loop="true" :haikuStates="getState()">-->
+        <!--</Test2>-->
         <div class="row mb-5">
             <div class="col-md-7 offset-1">
                 <div class="row mb-5">
@@ -26,7 +26,7 @@
                 </div>
                 <div v-if="isLogin" class="row">
                     <div class="col">
-                        <NewsList :newsList="favouriteNewsList" title="FAVOURITE NEWS"/>
+                        <NewsList :newsList="favouriteNewsList" title="FAVOURITE NEWS" emptyString="You haven't subscribed to anything yet"/>
                     </div>
                 </div>
             </div>

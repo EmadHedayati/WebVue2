@@ -8,9 +8,12 @@
                 <span class="h6 font-weight-bold text-info cp">View More</span>
             </div>
         </div>
-        <div class="row">
+        <div class="row" v-show="newsList.length == 0">
+            {{emptyString}}
+        </div>
+        <div class="row" v-show="newsList.length > 0">
             <NewsItem class="item my-2"
-                      v-for="item in newsList"
+                      v-for="item in newsList.slice(0, 10)"
                       :news="item"
                       :key="item.id"/>
         </div>
@@ -33,6 +36,10 @@
             title: {
                 type: String,
                 default: '',
+            },
+            emptyString: {
+                type: String,
+                default: 'No news to show',
             },
         },
     }

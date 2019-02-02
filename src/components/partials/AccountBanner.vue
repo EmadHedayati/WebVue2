@@ -22,8 +22,8 @@
         </div>
         <div class="row bottom justify-content-end">
             <div class="col-auto my-4 ml-4 align-self-end">
-                <div class="btn btn-primary">
-                    nbnbv
+                <div v-show="isLogin" class="btn" :class="subscribed ? 'btn-danger' : 'btn-light'" @click="subscribe()">
+                    {{subscribed ? 'Subscribed' : 'Subscribe'}}
                 </div>
             </div>
         </div>
@@ -33,6 +33,7 @@
 <script>
 
     import Banner from "../../models/Banner";
+    import SubscribeService from "../../webservices/SubscribeService";
 
     export default {
         name: 'AccountBanner',
@@ -44,7 +45,40 @@
             }
         },
 
+        data() {
+            return {
+                subscribed: false,
+                isLogin: false,
+            }
+        },
+
         methods: {
+            subscribe: function () {
+                var that = this;
+                if (this.subscribed) {
+                    this.subscribed = false;
+                    new SubscribeService().unsubscribe(this.banner).then((response) => {
+                        that.subscribed = response.subscribed;
+                    });
+                } else {
+                    this.subscribed = true;
+                    new SubscribeService().subscribe(this.banner).then((response) => {
+                        that.subscribed = response.subscribed;
+                    });
+                }
+            },
+        },
+
+        watch: {
+            banner() {
+                this.subscribed = this.banner.subscribed;
+            }
+        },
+
+        mounted() {
+            if (localStorage.login) {
+                this.isLogin = localStorage.login == 'true' ? true : false;
+            }
         },
     }
 </script>

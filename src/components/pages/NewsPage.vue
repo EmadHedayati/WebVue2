@@ -31,14 +31,24 @@
                 </div>
             </div>
             <div class="row p-3">
-                <div class="col-md-8 pr-5">
+                <div class="col-md-8 pr-5 mb-5">
                     <div class="row">
                         <CommentList :commentList="news.commentList" title="COMMENTS"/>
+                    </div>
+                    <div class="row border p-3">
+                        <div class="col align-self-center p-0">
+                            <input class="w-100 comment" placeholder="Post your comment here..." v-model="comment"/>
+                        </div>
+                        <div class="col-auto align-self-center">
+                            <div class="row">
+                                <img class="icon-size cp" src="../../assets/icons/baseline-send-24px.svg" @click="postComment()">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="row">
-                        <NewsList :newsList="relatedNewsList" title="RELATED NEWS"/>
+                        <NewsList :newsList="relatedNewsList" title="RELATED NEWS" emptyString="No related news to show"/>
                     </div>
                 </div>
             </div>
@@ -59,6 +69,7 @@
 
         data() {
             return {
+                comment: '',
                 imageHeight: 0,
                 news: new News({}),
                 relatedNewsList: [],
@@ -102,6 +113,15 @@
                 this.imageHeight = image.clientWidth * ratio;
             },
 
+            postComment() {
+                new NewsService().comment(this.comment, this.news.id).then((response) => {
+                    console.log(response);
+                    this.comment = '';
+                    let newComment = response.comment;
+                    this.news.commentList.push(newComment)
+                });
+            },
+
             updateData() {
                 this.getNewsPageData();
                 // this.getNewsData();
@@ -131,5 +151,14 @@
         width: 80px;
         height: 80px;
         object-fit: cover;
+    }
+
+    .comment {
+        border: white;
+        background-color: white;
+    }
+
+    .comment:focus {
+        outline: none !important;
     }
 </style>

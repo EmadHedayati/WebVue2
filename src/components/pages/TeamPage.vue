@@ -57,6 +57,7 @@
         methods: {
             getTeamPageData: function () {
                 new TeamService().get(this.$route.params.teamId).then((response) => {
+                    console.log("test")
                     this.team = new Team(response.team);
 
                     for (let item in response.latestNewsList)
@@ -85,11 +86,15 @@
 
             getBannerFromAccount(account) {
                 let banner = new Banner({
+                    "id": account.id,
+                    "type": account.type,
                     "title": account.title,
                     "description": account.description,
                     "image": account.image,
+                    "subscribed": account.subscribed,
                     "backgroundImage": account.backgroundImage,
                 });
+                console.log(banner)
                 return banner;
             },
 

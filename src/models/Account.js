@@ -23,6 +23,10 @@ class Account extends Model {
                 type: String,
                 default: ''
             },
+            subscribed: {
+                type: Boolean,
+                default: false
+            },
             dateCreated: {
                 type: Number,
                 default: 0

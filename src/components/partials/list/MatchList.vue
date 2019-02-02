@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col line"/>
         </div>
-        <div class="row py-4">
+        <div class="row py-4 const-height">
             <MatchListItem v-for="(item, index) in latestMatchList"
                            :match="item"
                            :key="index * 2"
@@ -79,4 +79,8 @@
 </script>
 
 <style scoped>
+    .const-height {
+        max-height: 500px;
+        overflow: auto;
+    }
 </style>

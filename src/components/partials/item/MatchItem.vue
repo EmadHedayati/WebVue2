@@ -58,7 +58,9 @@
                 ];
                 var tmp = new Date();
                 tmp.setTime(date);
-                return days[tmp.getDay()] + " " + tmp.getHours() + ":" + tmp.getMinutes();
+                return days[tmp.getDay()] + " "
+                    + (tmp.getHours() >= 10 ? tmp.getHours() : "0" + tmp.getHours()) + ":"
+                    + (tmp.getMinutes() >= 10 ? tmp.getMinutes() : "0" + tmp.getMinutes());
             }
         }
     };

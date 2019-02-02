@@ -14,6 +14,7 @@ export default {
     },
     news: {
         get: 'news/:newsId',
+        comment: 'news/comment'
     },
     matches: {
         get: 'matches/:matchId',
@@ -21,5 +22,9 @@ export default {
     leagues: {
         get: 'leagues/:leagueId',
         index: 'leagues'
+    },
+    account: {
+        subscribe: 'account/subscribe',
+        unsubscribe: 'account/unsubscribe'
     },
 }
